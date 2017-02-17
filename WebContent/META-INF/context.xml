@@ -7,7 +7,7 @@
 	username="adminGXjlxzG" 
 	password="QBShkFDW_69e" 
 	driverClassName="com.mysql.jdbc.Driver"  
-	url="jdbc:mysql://localhost:3308/femxa" 
+	url="jdbc:mysql://localhost:3306/femxa" 
 	maxActive="8"
 	maxIdle="8"/> 
 </Context>
