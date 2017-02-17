@@ -1,5 +1,4 @@
-<<<<<<< HEAD:Humantxt_1.txt
-﻿
+
 /* TEAM */
 
 	-- Proyect Director  -- Maximun Bronzed
@@ -263,5 +262,4 @@
 	Last update: 03/02/2017
 	Language: English / Castellano
 	Doctype: HTML5
->>>>>>> 9924e3efe2f5c778e6ec07c85150616968b9a149:humans.txt
 	IDE: Eclipse, Notepad++, PhpMyAdmin, Photoshop, MySql
