@@ -53,7 +53,6 @@ public class Pool {
 			//fuenteDatos.
 		}
 		catch (Exception e) {
-			//log.error("Imposible obtener conexión a la base de datos");
 		}
 		return conexion;
 	}
@@ -81,7 +80,6 @@ public class Pool {
 			 {conexion.close();
 			 
 			 } catch (SQLException e) {
-				 System.out.println("Error al liberar la conexión");
 			}
 		
 	}
@@ -102,7 +100,6 @@ public class Pool {
 			 {conexion.close();
 			 
 			 } catch (SQLException e) {
-				 System.out.println("Error al liberar la conexión");
 			}
 	}
 }

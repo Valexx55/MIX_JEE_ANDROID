@@ -8,10 +8,10 @@ import dto.*;
 public class ConsultorPatologiasService {
 
 	/**
-	 * Primero de todo una pagina web enviará un resultado dada la primera pregunta del test
-	 * (que será siempre la misma) en funcion del resultado se llamara a patologiasConSintoma
+	 * Primero de todo una pagina web envia un resultado dada la primera pregunta del test
+	 * (que ser siempre la misma) en funcion del resultado se llamara a patologiasConSintoma
 	 * o a patologiasSinSintoma mediante el metodo controlDeTest
-	 * Cuando devuelva la lista de patologias se llamará a sintomaAPreguntar para poder
+	 * Cuando devuelva la lista de patologias se llamar a sintomaAPreguntar para poder
 	 * realizar la siguiente pregunta del test
 	 */
 	
