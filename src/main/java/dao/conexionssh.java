@@ -21,7 +21,7 @@ public class conexionssh {
 	
 	public static void conectate_A_SSH () throws Throwable
 	{
-		JSch jsch = new JSch();
+		/*JSch jsch = new JSch();
         jsch.setKnownHosts(S_PATH_FILE_KNOWN_HOSTS);
         jsch.addIdentity(S_PATH_FILE_PRIVATE_KEY, S_PASS_PHRASE.getBytes());
 
@@ -30,12 +30,12 @@ public class conexionssh {
 
         sesion.setPortForwardingL(LOCAl_PORT, MYSQL_REMOTE_SERVER, REMOTE_PORT); 
 
-
+*/
 	}
 	
 	public static void desconectate_D_SSH ()
 	{
-		sesion.disconnect();
+		/*sesion.disconnect();*/
 	}
 
 	
