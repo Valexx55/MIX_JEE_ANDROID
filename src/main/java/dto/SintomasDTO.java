@@ -2,19 +2,16 @@ package dto;
 
 import java.util.List;
 
-import dao.GenericDAO;
-
-public class SintomasDTO extends GenericDTO{
+public class SintomasDTO{
 	
 	private int id_sintoma;
-	private String nombre_sintoma;
-	private List<PatologiasDTO> lista_patologias;
+	private String descripcion;
 	
 	public SintomasDTO(int id_sintoma, String nombre_sintoma)
 	{
 		super();
 		this.id_sintoma = id_sintoma;
-		this.nombre_sintoma = nombre_sintoma;
+		this.descripcion = nombre_sintoma;
 	}
 
 	public SintomasDTO(){
@@ -22,7 +19,7 @@ public class SintomasDTO extends GenericDTO{
 	}
 	
 	public SintomasDTO(String nombre_sintoma) {
-		this.nombre_sintoma = nombre_sintoma;
+		this.descripcion = nombre_sintoma;
 	}
 
 	public int getId_sintoma() {
@@ -31,11 +28,11 @@ public class SintomasDTO extends GenericDTO{
 	public void setId_sintoma(int id_sintoma) {
 		this.id_sintoma = id_sintoma;
 	}
-	public String getNombre_sintoma() {
-		return nombre_sintoma;
+	public String getDescripcion() {
+		return descripcion;
 	}
-	public void setNombre_sintoma(String nombre_sintoma) {
-		this.nombre_sintoma = nombre_sintoma;
+	public void setDescripcion(String nombre_sintoma) {
+		this.descripcion = nombre_sintoma;
 	}
 	
 }

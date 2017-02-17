@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
   <title>MIRATE_EL_OJO</title>
@@ -9,7 +12,18 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
- 
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: skyblue ;
+      padding: 25px;
+    }
+H1{size:4 color:pink}
 body{direction:rtl;
      background-image: url(../img/fondo.jpg);
      background-color: rgb(255, 255, 255);
@@ -21,9 +35,17 @@ body{direction:rtl;
      color:#5E6066;
     font-family:GESSTwoLight,GESSTwoMediumRegular,Droid Arabic Kufi,Helvetica,sans-serif;
     font-size:16px}
+	
+	pe {
+  border: silver 27px solid;
+  border-image-source: url("pastilla_60.png");
+  border-image-slice: 27;
+  padding: 10px;
+  text-align: justify;
+}
   </style>
 </head>
-<body  background="../img/fondo.jpg"  width="1500" heigth="1500">
+<body  background="fondo.jpg"  width="1500" heigth="1500">
   
 <nav class="navbar navbar-default">
   <div class="container-fluid">
@@ -47,7 +69,7 @@ body{direction:rtl;
      <p>
     <button type="button" class="btn btn-info">
         <a href="busqueda.html">  
-            <span class="glyphicon glyphicon-search"></span> BÃšSQUEDA</a>
+            <span class="glyphicon glyphicon-search"></span> BÚSQUEDA</a>
     </button>
   </p>
       </ul>
@@ -56,32 +78,31 @@ body{direction:rtl;
 </nav>
 <br><br>
 
-
 <div class="container">
-  <CENTER ><h2>QUERATOCONO</h2>
+  <CENTER ><h2>PRESBICIA</h2>
             
     <center><table class="table table-bordered">
     <tbody>
     <tr>
-        <td><img src="../img/tratamiento_queratocono.jpg"  class="img-rounded" alt="Cinque Terre" width="404" height="236">DESCRIPCION</td>
-    
-   
+        <td><img src="../img/presbicia-test.jpg"  class="img-rounded" alt="Cinque Terre" width="404" height="236">
+             DESCRIPCIÓN <br>${patologia.descripcion_patologia}</td>
    </tr>
     </tbody>
+        <tbody>
       <tr>
      
-        <td><center>CAUSAS</center></td>
+        <td><center>CAUSA <br>${patologia.causa_patologia}</center></td>
       </tr>
       <tr>
-        <td><center>TRATAMIENTO</center></td>
-        
-       
+          <td><center>TRATAMIENTO <br>${patologia.tratamiento_patologia}</center></td>
       </tr>
-      <tr>
-        <td><center>SINTOMAS</center></td>
-     
-        
-      </tr>
+        <tr>
+        <td><center>SINTOMAS</center>
+        <c:forEach items="${patologia.lista_sintomas}" 
+        var="sintoma">
+        ${sintoma.descripcion}<br>
+		</c:forEach>
+     </td>
         </table>
       </center>
     </CENTER>

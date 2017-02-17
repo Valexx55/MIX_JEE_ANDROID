@@ -4,39 +4,20 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import consultas_instrucciones.Consultas;
-import dto.GenericDTO;
+import consulta.Consultas;
 import dto.SintomasDTO;
 
-public class SintomasDAO extends GenericDAO {
+public class SintomasDAO  {
 
-	
-	@Override
-	public GenericDTO componerObjeto (ResultSet rs) throws SQLException
+	public static SintomasDTO componerObjeto (ResultSet rs) throws Exception
 	{
-		SintomasDTO sintomasDTO = null;
+		SintomasDTO sintomaDTO = null;
 		
-		sintomasDTO = new SintomasDTO (rs.getString("NOMBRE_PATOLOGIA"));
+			int id_sint = rs.getInt("id_sint");
+			String desc_sint = rs.getString("des_sint");
+			sintomaDTO = new SintomasDTO(id_sint, desc_sint);
 		
-		return sintomasDTO;
+		return sintomaDTO;
 	}
-	
-	public GenericDTO seleccionarSintomaPorNombre(){
-		
-		return null;
-	}
-	
-	public List<GenericDTO> seleccionarTodosSintomas() throws SQLException{
-		
-		List<GenericDTO> lista_sintomas = null;
-		
-			lista_sintomas = ejecutarConsultaMultiple(Consultas.CONSULTA_LISTAR_SINTOMAS);
-		
-		return lista_sintomas;
-	}
-	
-	public List<GenericDTO> seleccionarSintomasPorPatologia(){
-		
-		return null;
-	}
+
 }

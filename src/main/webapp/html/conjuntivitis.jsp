@@ -1,5 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
   <title>MIRATE_EL_OJO</title>
   <meta charset="utf-8">
@@ -47,7 +50,7 @@ body{direction:rtl;
      <p>
     <button type="button" class="btn btn-info">
         <a href="busqueda.html">  
-            <span class="glyphicon glyphicon-search"></span> BÃšSQUEDA</a>
+            <span class="glyphicon glyphicon-search"></span> BÚSQUEDA</a>
     </button>
   </p>
       </ul>
@@ -58,33 +61,32 @@ body{direction:rtl;
 
 
 <div class="container">
-  <CENTER ><h2>ACROMATOPSIA</h2>
+  <CENTER ><h2>CONJUNTIVITIS</h2>
             
     <center><table class="table table-bordered">
     <tbody>
     <tr>
-        <td><img src="../img/test-acromatopsia.jpg"  class="img-rounded" alt="Cinque Terre" width="404" height="236">DESCRIPCION</td>
-    
-   
+        <td><img src="../img/conjuntivitis.jpg"  class="img-rounded" alt="Cinque Terre" width="404" height="236">
+          DESCRIPCIÓN <br>${patologia.descripcion_patologia}</td>
    </tr>
     </tbody>
+        <tbody>
       <tr>
      
-          <td><center>CAUSAS</center></td>
+        <td><center>CAUSA <br>${patologia.causa_patologia}</center></td>
       </tr>
       <tr>
-          <td><center>TRATAMIENTO</center></td>
-        
-       
+          <td><center>TRATAMIENTO <br>${patologia.tratamiento_patologia}</center></td>
       </tr>
-      <tr>
-        <td><center>SINTOMAS</center></td>
-     
-        
-      </tr>
+        <tr>
+        <td><center>SINTOMAS</center>
+        <c:forEach items="${patologia.lista_sintomas}" 
+        var="sintoma">
+        ${sintoma.descripcion}<br>
+		</c:forEach>
+     </td>
         </table>
       </center>
-    
     </CENTER>
     </div>
     </body>

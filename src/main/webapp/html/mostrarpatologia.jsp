@@ -52,9 +52,9 @@ body{direction:rtl;
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="#">
-            <a href="home.html">Inicio</a></li>
-        <li><a href="patologias.html">Patologias</a></li>
-        <li><a href="test.html">Test</a></li>
+            <a href="html/home.html">Inicio</a></li>
+        <li><a href="html/patologias.html">Patologias</a></li>
+        <li><a href="html/test.html">Test</a></li>
         
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -72,24 +72,23 @@ body{direction:rtl;
 
 
 <div class="container">
-  <h1 align="left">CATARATAS</h1>
+  <h1 align="left">${patologia.nombre_patologia}</h1>
             
     <center><table style="backgroundcolor="white"; opacity: 0,5; filter:alpha(opacity=50)" class="table table-bordered">
     <tbody>
     <tr>
-        <td><img src= "img\catarata-ojos.jpg" class="img-rounded" alt="Cinque Terre" width="404" height="300"></td>
-        <td align="left"> <br><b>DESCRIPCIÓN  </b><br><br><div align="left" >${patologia.descripcion}<br></div></td>
-    
+        <td><img src= ${patologia.ruta_imagen_patologia} class="img-rounded" alt="Cinque Terre" width="404" height="300"></td>
+        <td align="left"> <br><b>DESCRIPCIÓN  </b><br><br><div align="left" >${patologia.descripcion_patologia}<br></div></td>
    
    </tr>
     </tbody>
         <tbody>
       <tr>
      
-        <td colspan="2" align="left"><br><b>CAUSA</b> <br><br><div align="left" >${patologia.causa}<br></div></td>
+        <td colspan="2" align="left"><br><b>CAUSA</b> <br><br><div align="left" >${patologia.causa_patologia}<br></div></td>
       </tr>
       <tr>
-          <td colspan="2" align="left"><br><b>TRATAMIENTO </b><br><br> <div> <p align="left">${patologia.tratamiento}<br></p></div></td>
+          <td colspan="2" align="left"><br><b>TRATAMIENTO </b><br><br> <div> <p align="left">${patologia.tratamiento_patologia}<br></p></div></td>
         
        
       </tr>
@@ -106,11 +105,6 @@ body{direction:rtl;
   </table></center>
     </CENTER>
     </div>
-
-
-    
-
-
 
 </body>
 </html>
