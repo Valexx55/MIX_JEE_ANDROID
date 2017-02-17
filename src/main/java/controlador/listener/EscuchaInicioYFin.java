@@ -1,4 +1,4 @@
-package servicios;
+package controlador.listener;
 
 
 import java.util.Map;
@@ -8,7 +8,6 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
 import dao.PatologiasDAO;
-import dao.conexionssh;
 import dto.MapaPatologias;
 import dto.PatologiasDTO;
 
@@ -35,7 +34,6 @@ public class EscuchaInicioYFin implements ServletContextListener {
     	System.out.println("PROGRAMA DESTRUIDO");
     	System.out.println("PROGRAMA DESTRUIDO");
     	
-    	conexionssh.desconectate_D_SSH ();
     }
 
 	/**
@@ -47,7 +45,7 @@ public class EscuchaInicioYFin implements ServletContextListener {
     	System.out.println("PROGRAMA INICIADO");
     	System.out.println("PROGRAMA INICIADO");
     	try {
-			conexionssh.conectate_A_SSH ();
+			
 			System.out.println("La conexi SSH queda iniciada");
 			
 			PatologiasDAO patologiaDAO = new PatologiasDAO();
