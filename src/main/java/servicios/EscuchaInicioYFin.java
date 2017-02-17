@@ -48,7 +48,7 @@ public class EscuchaInicioYFin implements ServletContextListener {
     	System.out.println("PROGRAMA INICIADO");
     	try {
 			conexionssh.conectate_A_SSH ();
-			System.out.println("La conexión SSH queda iniciada");
+			System.out.println("La conexi SSH queda iniciada");
 			
 			PatologiasDAO patologiaDAO = new PatologiasDAO();
 			Map<Integer, PatologiasDTO> mapa_patDto = patologiaDAO.obtenerListaPalogias();
