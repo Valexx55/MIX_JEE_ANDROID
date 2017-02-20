@@ -78,7 +78,7 @@ body{direction:rtl;
     <tbody>
     <tr>
         <td><img src= ${patologia.ruta_imagen_patologia} class="img-rounded" alt="Cinque Terre" width="404" height="300"></td>
-        <td align="left"> <br><b>DESCRIPCIÓN  </b><br><br><div align="left" >${patologia.descripcion_patologia}<br></div></td>
+        <td align="left"> <br><b>DESCRIPCIÓN  </b><br><br>${patologia.descripcion_patologia}<br></td>
    
    </tr>
     </tbody>
