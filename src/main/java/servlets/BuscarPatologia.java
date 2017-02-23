@@ -9,8 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import dto.PatologiasDTO;
 import servicios.PatologiaService;
+
+
 
 /**
  * Servlet implementation class ObtenerPatologiaPorId
@@ -20,6 +24,8 @@ public class BuscarPatologia extends HttpServlet {
 	private PatologiaService service_patologia;
 	private PatologiasDTO patologia;
 	
+	
+	private final static Logger log = Logger.getLogger("mylog");
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -34,6 +40,8 @@ public class BuscarPatologia extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		log.error("PROGRAMA INICIADO FEMXA");
+		
 		PrintWriter pw = response.getWriter();
 		
 		String valorid = request.getParameter("id");
