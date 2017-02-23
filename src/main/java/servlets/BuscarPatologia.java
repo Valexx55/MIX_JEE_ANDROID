@@ -40,7 +40,7 @@ public class BuscarPatologia extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		log.error("PROGRAMA INICIADO FEMXA");
+		log.debug("Recibiendo la petición de la web");
 		
 		PrintWriter pw = response.getWriter();
 		
