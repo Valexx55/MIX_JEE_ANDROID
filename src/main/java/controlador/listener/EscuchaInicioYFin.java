@@ -7,6 +7,8 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
+import org.apache.log4j.Logger;
+
 import dao.PatologiasDAO;
 import dto.MapaPatologias;
 import dto.PatologiasDTO;
@@ -18,6 +20,8 @@ import dto.PatologiasDTO;
 @WebListener
 public class EscuchaInicioYFin implements ServletContextListener {
 
+	
+	private final static Logger log = Logger.getLogger("mylog");
     /**
      * Default constructor. 
      */
@@ -29,6 +33,7 @@ public class EscuchaInicioYFin implements ServletContextListener {
      * @see ServletContextListener#contextDestroyed(ServletContextEvent)
      */
     public void contextDestroyed(ServletContextEvent arg0)  { 
+    	log.info("PROGRAMA INICIADO FEMXA");
     	System.out.println("PROGRAMA DESTRUIDO");
     	System.out.println("PROGRAMA DESTRUIDO");
     	System.out.println("PROGRAMA DESTRUIDO");
@@ -40,6 +45,7 @@ public class EscuchaInicioYFin implements ServletContextListener {
      * @see ServletContextListener#contextInitialized(ServletContextEvent)
      */
     public void contextInitialized(ServletContextEvent arg0)  { 
+    	
     	System.out.println("PROGRAMA INICIADO");
     	System.out.println("PROGRAMA INICIADO");
     	System.out.println("PROGRAMA INICIADO");
