@@ -33,7 +33,7 @@ public class EscuchaInicioYFin implements ServletContextListener {
      * @see ServletContextListener#contextDestroyed(ServletContextEvent)
      */
     public void contextDestroyed(ServletContextEvent arg0)  { 
-    	log.info("PROGRAMA INICIADO FEMXA");
+    	log.error("PROGRAMA INICIADO FEMXA");
     	System.out.println("PROGRAMA DESTRUIDO");
     	System.out.println("PROGRAMA DESTRUIDO");
     	System.out.println("PROGRAMA DESTRUIDO");
