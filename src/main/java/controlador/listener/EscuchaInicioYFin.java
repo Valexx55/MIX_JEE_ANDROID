@@ -13,59 +13,44 @@ import dao.PatologiasDAO;
 import dto.MapaPatologias;
 import dto.PatologiasDTO;
 
-/**
- * Application Lifecycle Listener implementation class EscuchaInicioYFin
- *
- */
-@WebListener
-public class EscuchaInicioYFin implements ServletContextListener {
-
-	
+/**  Application Lifecycle Listener implementation class EscuchaInicioYFin  */
+	@WebListener
+public class EscuchaInicioYFin implements ServletContextListener
+{
 	private final static Logger log = Logger.getLogger("mylog");
-    /**
-     * Default constructor. 
-     */
-    public EscuchaInicioYFin() {
-        // TODO Auto-generated constructor stub
+	
+		/** Default constructor */
+    public EscuchaInicioYFin()
+    {
+    	//default
     }
     
-	/**
-     * @see ServletContextListener#contextDestroyed(ServletContextEvent)
-     */
-    public void contextDestroyed(ServletContextEvent arg0)  { 
-    	log.error("PROGRAMA INICIADO FEMXA");
-    	System.out.println("PROGRAMA DESTRUIDO");
-    	System.out.println("PROGRAMA DESTRUIDO");
-    	System.out.println("PROGRAMA DESTRUIDO");
-    	System.out.println("PROGRAMA DESTRUIDO");
-    	
+		/**  @see ServletContextListener#contextDestroyed(ServletContextEvent) */
+    public void contextDestroyed(ServletContextEvent arg0) 
+    { 
+    	log.debug ("PROGRAMA FINALIZADO");
     }
 
-	/**
-     * @see ServletContextListener#contextInitialized(ServletContextEvent)
-     */
-    public void contextInitialized(ServletContextEvent arg0)  { 
+		/**  @see ServletContextListener#contextInitialized(ServletContextEvent) */
+    public void contextInitialized(ServletContextEvent arg0) 
+    { 
+    	log.debug ("PROGRAMA INICIADO");
     	
-    	System.out.println("PROGRAMA INICIADO");
-    	System.out.println("PROGRAMA INICIADO");
-    	System.out.println("PROGRAMA INICIADO");
-    	System.out.println("PROGRAMA INICIADO");
-    	try {
-			
-			System.out.println("La conexi SSH queda iniciada");
+    	try
+    	{
+    		log.debug ("La conexion SSH queda iniciada");
 			
 			PatologiasDAO patologiaDAO = new PatologiasDAO();
-			Map<Integer, PatologiasDTO> mapa_patDto = patologiaDAO.obtenerListaPalogias();
+			Map <Integer, PatologiasDTO> mapa_patDto = patologiaDAO.obtenerListaPalogias();
 				
 				MapaPatologias mapaPatologias = new MapaPatologias();
-				mapaPatologias.setMapapatologia(mapa_patDto);
+				mapaPatologias.setMapapatologia (mapa_patDto);
 				
-				System.out.println("Mapa Inicializado");
-				
-			} catch (Throwable e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				log.debug ("Mapa Inicializado");
+		} 
+    		catch (Throwable e)
+    		{
+				log.error ("Ha ocurrido un error inesperado", e);
 			}
-	    }
-	
+    }
 }

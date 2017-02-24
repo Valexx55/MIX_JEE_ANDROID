@@ -7,33 +7,32 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Servlet implementation class ListarPatologias
- */
-@WebServlet("/ListarPatologias")
-public class ListarPatologias extends HttpServlet {
+import org.apache.log4j.Logger;
+
+		/**  Servlet implementation class ListarPatologias  */
+	@WebServlet("/ListarPatologias")
+public class ListarPatologias extends HttpServlet
+{
+	private final static Logger log = Logger.getLogger("mylog");
+		
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ListarPatologias() {
+    	/**  @see HttpServlet#HttpServlet()   */
+    public ListarPatologias()
+    {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	/**  @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response) 	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+		log.debug ("doGet Iniciado");
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	/**  @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response) 	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+		log.debug ("doPost Iniciado");
 		doGet(request,response);
 	}
-
 }

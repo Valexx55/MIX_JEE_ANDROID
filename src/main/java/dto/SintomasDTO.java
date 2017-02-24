@@ -1,8 +1,10 @@
 package dto;
 
-import java.util.List;
+import org.apache.log4j.Logger;
 
-public class SintomasDTO{
+public class SintomasDTO
+{	
+	private final static Logger log = Logger.getLogger("mylog");
 	
 	private int id_sintoma;
 	private String descripcion;
@@ -12,27 +14,36 @@ public class SintomasDTO{
 		super();
 		this.id_sintoma = id_sintoma;
 		this.descripcion = nombre_sintoma;
+		log.debug ("Objeto sintomas DTO creado");
 	}
 
-	public SintomasDTO(){
-		
+	public SintomasDTO()
+	{
+		log.debug ("Sintomas DTO");
 	}
 	
-	public SintomasDTO(String nombre_sintoma) {
+	public SintomasDTO(String nombre_sintoma)
+	{
 		this.descripcion = nombre_sintoma;
 	}
 
-	public int getId_sintoma() {
+	public int getId_sintoma()
+	{
 		return id_sintoma;
 	}
-	public void setId_sintoma(int id_sintoma) {
+	
+	public void setId_sintoma(int id_sintoma)
+	{
 		this.id_sintoma = id_sintoma;
 	}
-	public String getDescripcion() {
+	
+	public String getDescripcion()
+	{
 		return descripcion;
 	}
-	public void setDescripcion(String nombre_sintoma) {
+	
+	public void setDescripcion(String nombre_sintoma)
+	{
 		this.descripcion = nombre_sintoma;
 	}
-	
 }
