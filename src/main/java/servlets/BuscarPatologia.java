@@ -15,30 +15,23 @@ import dto.PatologiasDTO;
 import servicios.PatologiaService;
 
 
-
-/**
- * Servlet implementation class ObtenerPatologiaPorId
- */
-@WebServlet("/BuscarPatologia")
-public class BuscarPatologia extends HttpServlet {
+/** Servlet implementation class ObtenerPatologiaPorId  */
+	@WebServlet("/BuscarPatologia")
+public class BuscarPatologia extends HttpServlet
+{
 	private PatologiaService service_patologia;
 	private PatologiasDTO patologia;
-	
 	
 	private final static Logger log = Logger.getLogger("mylog");
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public BuscarPatologia() {
+	/** @see HttpServlet#HttpServlet()   */
+    public BuscarPatologia()
+    {
         super();
-
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
+	/**  @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response) */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		log.debug("Recibiendo la petición de la web");
 		
@@ -52,22 +45,21 @@ public class BuscarPatologia extends HttpServlet {
 		request.setAttribute("patologia", patologia);
 		
 		request.getRequestDispatcher(".//html//mostrarpatologia.jsp").forward(request, response);
-
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+	/**  @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)  */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+		log.debug("doPost iniciado");
 		doGet(request,response);
 	}
 	
-	@Override
-	public void init() throws ServletException {
+		@Override
+	public void init() throws ServletException
+	{
 		service_patologia = new PatologiaService();
 		patologia = new PatologiasDTO();
 		super.init();
+		log.debug("metodo init iniciado");
 	}
-
 }
