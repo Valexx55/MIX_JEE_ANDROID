@@ -38,8 +38,7 @@ public class PatologiasDTO
 		this.causa_patologia = causa_patologia;
 		this.ruta_imagen_patologia = ruta_imagen_patologia;
 		this.lista_sintomas = new ArrayList<SintomasDTO>();
-		log.debug ("Constructor Patologias DTO creado");
-		log.debug ("Getters And Setters creados");
+		log.debug ("Objeto Patologias DTO creado");
 	}
 
 	public int getId_patologia()
