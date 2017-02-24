@@ -39,7 +39,7 @@ public class Pool
 			{
 				InitialContext ct = new InitialContext ();
 				ds = (DataSource)ct.lookup(fuente);
-				log.debug ("Fuente de datos iniciada");
+					log.debug ("Fuente de datos iniciada");
 			}
 				catch (Exception e)
 				{
@@ -56,7 +56,7 @@ public class Pool
 			try
 			{
 				conexion = fuenteDatos.getConnection();
-				log.debug ("Conexion de fuente de datos establecida");
+					log.debug ("Conexion de fuente de datos establecida");
 			}
 				catch (Exception e) 
 				{
@@ -71,7 +71,7 @@ public class Pool
 		try 
 		{
 			rs.close(); 
-			log.debug ("ResulSet liberado");
+				log.debug ("ResulSet liberado");
 		}
 			catch (SQLException e)
 			{
@@ -81,7 +81,7 @@ public class Pool
 		try 
 		{			
 			st.close(); 
-			log.debug ("Statement liberado");
+				log.debug ("Statement liberado");
 		}
 			catch (SQLException e)
 			{
@@ -91,7 +91,7 @@ public class Pool
 		try 
 		{
 			conexion.close();
-			log.debug ("Connection liberado");
+				log.debug ("Connection liberado");
 		} 
 			catch (SQLException e)
 			{
@@ -104,7 +104,7 @@ public class Pool
 		try 
 		{
 			st.close();
-			log.debug ("Statement liberado");
+				log.debug ("Statement liberado");
 		}
 			catch (SQLException e)
 			{
@@ -114,7 +114,7 @@ public class Pool
 		try 
 		{
 			conexion.close();
-			log.debug ("Connection liberado");
+				log.debug ("Connection liberado");
 		} 
 			catch (SQLException e)
 			{

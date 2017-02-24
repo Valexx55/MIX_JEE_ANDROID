@@ -155,10 +155,7 @@ public class PatologiasDAO
 				{
 					listaids.add(rs.getInt(1));
 				}
-				log.debug ("Lista Obtener patologias por Id creada");
-				
-			
-				
+				log.debug ("Lista Obtener patologias por Id creada");				
 		} 
 			catch (Exception e) 
 			{

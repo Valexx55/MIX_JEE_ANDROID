@@ -15,9 +15,8 @@ public class SintomasDAO
 	
 	public static SintomasDTO componerObjeto (ResultSet rs) throws Exception
 	{
-		
 		SintomasDTO sintomaDTO = null;
-			log.debug("Componirndo objeto sintoma DTO");
+				log.debug("Componiendo objeto sintoma DTO");
 			int id_sint = rs.getInt ("id_sint");
 			String desc_sint = rs.getString ("des_sint");
 			sintomaDTO = new SintomasDTO(id_sint, desc_sint);
