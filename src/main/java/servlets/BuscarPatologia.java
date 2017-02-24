@@ -14,26 +14,33 @@ import org.apache.log4j.Logger;
 import dto.PatologiasDTO;
 import servicios.PatologiaService;
 
-/**  Servlet implementation class ObtenerPatologiaPorId  */
-	@WebServlet("/BuscarPatologia")
-public class BuscarPatologia extends HttpServlet
-{
+
+
+/**
+ * Servlet implementation class ObtenerPatologiaPorId
+ */
+@WebServlet("/BuscarPatologia")
+public class BuscarPatologia extends HttpServlet {
 	private PatologiaService service_patologia;
 	private PatologiasDTO patologia;
+	
 	
 	private final static Logger log = Logger.getLogger("mylog");
 	private static final long serialVersionUID = 1L;
        
-		/**  @see HttpServlet#HttpServlet() */
-    public BuscarPatologia()
-    {
+    /**
+     * @see HttpServlet#HttpServlet()
+     */
+    public BuscarPatologia() {
         super();
+
     }
 
-		/**  @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response) */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-	{
-			log.debug ("doGet iniciado");
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		log.debug("Recibiendo la petición de la web");
 		
 		PrintWriter pw = response.getWriter();
 		
@@ -42,27 +49,25 @@ public class BuscarPatologia extends HttpServlet
 
 		patologia = service_patologia.obtenerPatologiaPorID(id);
 		
-			log.debug ("Metodo obtener patologia por Id iniciado");
-		
 		request.setAttribute("patologia", patologia);
 		
 		request.getRequestDispatcher(".//html//mostrarpatologia.jsp").forward(request, response);
-			log.debug ("Patologias mostradas");
+
 	}
 
-		/**  @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response) 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
-	{
-			log.debug ("doPost iniciado");
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
 		doGet(request,response);
 	}
 	
-		@Override
-	public void init() throws ServletException
-	{
+	@Override
+	public void init() throws ServletException {
 		service_patologia = new PatologiaService();
 		patologia = new PatologiasDTO();
 		super.init();
-			log.debug ("Metodo init, iniciado.. el Servlet ha sido llamado");
 	}
+
 }
