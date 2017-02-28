@@ -29,7 +29,7 @@ public class BuscarPatologiasPorIdSintoma extends HttpServlet {
     public BuscarPatologiasPorIdSintoma() {
         super();
     }
-
+ 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
