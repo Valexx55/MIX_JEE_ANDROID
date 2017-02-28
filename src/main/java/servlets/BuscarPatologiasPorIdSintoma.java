@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -22,7 +24,7 @@ import servicios.PatologiaService;
 @WebServlet("/BuscarPatologiasPorIdSintoma")
 public class BuscarPatologiasPorIdSintoma extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	private final static Logger log = Logger.getLogger("mylog");
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -34,6 +36,7 @@ public class BuscarPatologiasPorIdSintoma extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		try {
 		
 		String valorSintoma = request.getParameter("sintomaIntroducido");
 		int id_sintoma = Integer.parseInt(valorSintoma);
@@ -50,6 +53,10 @@ public class BuscarPatologiasPorIdSintoma extends HttpServlet {
 		
 		response.setCharacterEncoding("UTF-8");
 		response.getWriter().write(s);
+		} catch (Exception e)
+		{
+			log.error("ERROR 32" , e);
+		}
 	}
 
 	/**
