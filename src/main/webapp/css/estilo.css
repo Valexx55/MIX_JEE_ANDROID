@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+li {
+    list-style-type: none;
+    
+}
+
+li:HOVER
+{
+	cursor: pointer;
+	    width: 550px;
+	background-color: skyblue;
+	
+}
+
+ul {
+	margin: 3px 0px 0px 2px;
+	-webkit-padding-start: 2px;
+	 
+}
+
+/*#divmain input {
+	width: 800px;
+*/
+
+#lista ul li {
+	
+	margin:0 auto;
+}
+
+.raizP{
+    
+    font-size: 20px;
+    
+    margin-top:50px;
+    
+    
+}
+input.intro {
+	float: left;
+	text-align: center;
+}
+}

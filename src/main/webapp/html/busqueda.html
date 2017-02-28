@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <title>MIRATE_EL_OJO</title>
+<meta charset="ISO-8859-1">
+<link href="../css/estilo.css" rel="stylesheet" />
+ <title>MIRATE_EL_OJO</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -22,7 +24,7 @@
     }
 H1{size:4 color:pink}
 body{direction:rtl;
-     background-image: url(fondo.jpg);
+     background-image: url("../img/fondo.jpg");
      background-color: rgb(255, 255, 255);
      background-attachment: fixed;
      background-repeat: repeat-x;
@@ -33,8 +35,116 @@ body{direction:rtl;
     font-family:GESSTwoLight,GESSTwoMediumRegular,Droid Arabic Kufi,Helvetica,sans-serif;
     font-size:16px}
   </style>
+<script>
+	function iniciaObjetoRequest() {
+
+		return new XMLHttpRequest();
+	}
+	function introSintoma() {
+		var cadena = document.getElementById("intro").value;
+		var raizP = document.getElementById("raizP");
+		var raizul = document.getElementById("raizul");
+		raizP.innerHTML = "";
+		
+		if (cadena != '') //llamo sólo si ha introducido algo: OPTIMIZO
+		{
+			xmlHttp = iniciaObjetoRequest();
+			xmlHttp.onreadystatechange = procesarEventos;
+			xmlHttp.open('GET', '../BuscarSintomasPorIniciales?sintomaBuscado=' + cadena,
+					true); //indicamos como vamos a enviar los datos, en este caso con el metodo GET al archivo meses.php?num= el valor que le indiquemos en el textbox
+			xmlHttp.send(null);
+
+		}else{
+			raizul.innerHTML = "";
+		}
+		
+	}
+		
+		
+		function procesarEventosPatologias() {
+
+		if (xmlHttp.readyState == 4) {
+			if (xmlHttp.status == 200) {
+		
+				
+				
+				
+				var raizP = document.getElementById("raizP");
+				raizP.innerHTML = "<h4><b>El sintoma seleccionado nos lleva a las siguiente patologias: </b></h4>";
+				var li;
+				var lista_patologias = JSON.parse(xmlHttp.responseText);
+				var titulo = document.getElementById("raizTitulo").innerHTML;
+				var patologia;
+				var nombre;
+				var newLink;
+				var servlet;
+				
+				for (var i = 0; i < lista_patologias.length; i++) {
+					patologia = lista_patologias[i].id_patologia;
+					nombre = lista_patologias[i].nombre_patologia;
+					li = document.createElement("li");
+					newlink = document.createElement("a");
+					newlink.href="../BuscarPatologia?id="+patologia;
+					newlink.innerHTML = nombre;
+					li.appendChild(newlink);
+					raizP.appendChild(li);
+				}
+
+			} else {
+				alert("Ha ocurrido un error" + xmlHttp.status + ":"
+						+ xmlHttp.statusText);
+			}
+		}
+		}
+	
+	function seleccionaSintoma(text,text2) {
+		var id_sintoma = text;
+		var raizul = document.getElementById("raizul");
+		var texto = document.getElementById("intro");
+		raizul.innerHTML = "";
+		texto.value = text2;
+		
+			xmlHttp = iniciaObjetoRequest();
+			xmlHttp.onreadystatechange = procesarEventosPatologias;
+			xmlHttp.open('GET', '../BuscarPatologiasPorIdSintoma?sintomaIntroducido=' + id_sintoma,
+					true); //indicamos como vamos a enviar los datos, en este caso con el metodo GET al archivo meses.php?num= el valor que le indiquemos en el textbox
+			xmlHttp.send(null);
+
+		
+	}
+	function procesarEventos() {
+
+		if (xmlHttp.readyState == 4) {
+			if (xmlHttp.status == 200) {
+				
+
+				var raiz = document.getElementById("raizul");
+				raiz.innerHTML = "";
+				var li;
+				var lista_sintomas = JSON.parse(xmlHttp.responseText);
+				var sintoma;
+				var descripcion;
+				
+				for (var i = 0; i < lista_sintomas.length; i++) {
+					sintoma = lista_sintomas[i].id;
+					descripcion = lista_sintomas[i].descripcion;
+					li = document.createElement("li");
+					li.appendChild(document.createTextNode(descripcion));
+					li.setAttribute("onclick", "seleccionaSintoma('"+sintoma+"','"+descripcion+"');");
+					raiz.appendChild(li);
+				}
+
+			} else {
+				alert("Ha ocurrido un error" + xmlHttp.status + ":"
+						+ xmlHttp.statusText);
+			}
+		}
+	}
+</script>
 </head>
-<body  background="fondo.jpg"  width="1500" heigth="1500">
+
+
+<body  background="..\img\fondo.jpg"  width="1500" heigth="1500" >
     
 <nav class="navbar navbar-default">
   <div class="container-fluid">
@@ -58,50 +168,49 @@ body{direction:rtl;
      <p>
     <button type="button" class="btn btn-info">
         <a href="busqueda.html">  
-            <span class="glyphicon glyphicon-search"></span> BÃšSQUEDA</a>
+            <span class="glyphicon glyphicon-search"></span> BÚSQUEDA</a>
     </button>
   </p>
       </ul>
     </div>
   </div>
 </nav>
-    
-    
-     
-    <center>
-   
-
- <footer class="container-fluid text-center">
+<center> <footer class="container-fluid text-center">
   <p class="fuente">BUSQUEDA</p>
 </footer>
+<br><br>
+   <br><br>
+   <br><br> 
+   <form>
 
-         <br><br>
-   <br><br>
-   <br><br>
-   
-         <form>
-  
-             <div class="container">
+	<div id="divmain">
+	<div class="container">
 	<div class="row">
         <div class="col-sm-6 col-sm-offset-3">
             <div id="imaginary_container"> 
                 <div class="input-group stylish-input-group">
-                    <input type="text" class="form-control"  placeholder="                                           ?QUE QUIERES BUSCARÂ¿" >
-                    <span class="input-group-addon">
-                        <button type="submit">
+		<input type="text" class="form-control" id="intro"  dir="ltr" placeholder="Introduce tu síntoma..."  style="text-align:center" onkeypress="return event.keyCode != 13" onkeyup="introSintoma();" >
+		<span class="input-group-addon"> 
+                        <button value ="submit">
                             <span class="glyphicon glyphicon-search"></span>
                         </button>  
                     </span>
-                </div>
-            </div>
-        </div>
 	</div>
-</div>
-        </form>
-    </center>
-    </body>
-    
-        
-    
-             
+	<div id="lista" dir="ltr" >
+		<ul id="raizul">
+		</ul>
+			</div>
+			</div>
+			</div>
+			</div>
+			<div id="raizTitulo" dir="ltr"></div>
+			
+		<ul id="raizP" dir="ltr">
+		</ul>
+		</div>
+		</div>
+		
+</form>
+</center>
+</body>
 </html>
