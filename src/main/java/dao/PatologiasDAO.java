@@ -141,13 +141,13 @@ public class PatologiasDAO
 		Statement st = null;
 		ResultSet rs = null;
 		
-			log.debug ("Lista Obtener patologias por Id");
+			log.error ("Lista Obtener patologias por Id");
 		
 		try 
 		{
 			pool = Pool.getInstance();
 			con = pool.getConnection();
-			log.debug ("Conexion establecida");
+			log.error ("Conexion establecida");
 			st = con.createStatement();
 			rs = st.executeQuery(Consultas.CONSULTA_ID_PATOLOGIAS);
 				
@@ -155,7 +155,7 @@ public class PatologiasDAO
 				{
 					listaids.add(rs.getInt(1));
 				}
-				log.debug ("Lista Obtener patologias por Id creada");				
+				log.error ("Lista Obtener patologias por Id creada");				
 		} 
 			catch (Exception e) 
 			{
@@ -164,7 +164,7 @@ public class PatologiasDAO
 				finally 
 				{
 					pool.liberarRecursos(con, st, rs);
-						log.debug ("Recursos obtener patologias por id liberados");
+						log.error ("Recursos obtener patologias por id liberados");
 				}
 			
 		return listaids;	

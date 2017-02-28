@@ -28,17 +28,17 @@ public class EscuchaInicioYFin implements ServletContextListener
 		/**  @see ServletContextListener#contextDestroyed(ServletContextEvent) */
     public void contextDestroyed(ServletContextEvent arg0) 
     { 
-    	log.debug ("PROGRAMA FINALIZADO");
+    	log.error ("PROGRAMA FINALIZADO");
     }
 
 		/**  @see ServletContextListener#contextInitialized(ServletContextEvent) */
     public void contextInitialized(ServletContextEvent arg0) 
     { 
-    	log.debug ("PROGRAMA INICIADO");
+    	log.error ("PROGRAMA INICIADO");
     	
     	try
     	{
-    		log.debug ("La conexion SSH queda iniciada");
+    		log.error ("La conexion SSH queda iniciada");
 			
 			PatologiasDAO patologiaDAO = new PatologiasDAO();
 			Map <Integer, PatologiasDTO> mapa_patDto = patologiaDAO.obtenerListaPalogias();
@@ -46,7 +46,7 @@ public class EscuchaInicioYFin implements ServletContextListener
 				MapaPatologias mapaPatologias = new MapaPatologias();
 				mapaPatologias.setMapapatologia (mapa_patDto);
 				
-				log.debug ("Mapa Inicializado");
+				log.error ("Mapa Inicializado");
 		} 
     		catch (Throwable e)
     		{

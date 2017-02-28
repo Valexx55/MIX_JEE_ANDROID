@@ -42,7 +42,7 @@ public class SintomasDAO  {
 			
 			pool = Pool.getInstance();
 			con = pool.getConnection();
-			log.debug ("Conexion establecida");
+			log.error ("Conexion establecida");
 			st = con.createStatement();
 			rs = st.executeQuery(Consultas.CONSULTA_TODOS_SINTOMAS);
 			
