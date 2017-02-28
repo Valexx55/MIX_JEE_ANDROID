@@ -28,6 +28,9 @@ public class SintomasService {
 		
 		log.debug("Recorro lista de síntomas");
 		
+		try{
+			
+		
 		for (SintomasDTO sintoma:lista_sintomas)
 		{
 			sintoma_descripcion = sintoma.getDescripcion();
@@ -49,6 +52,10 @@ public class SintomasService {
 	        contador = 0;
 			encontrado = false;
 
+		}
+		} catch (Exception e)
+		{
+			log.error("NO SE QUE PETA!", e);
 		}
 		
 		log.debug("FIN Recorro lista de síntomas");
