@@ -3,12 +3,19 @@ package servicios;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import dto.ListadoSintomas;
 import dto.SintomasDTO;
 
 public class SintomasService {
 
+	private final static Logger log = Logger.getLogger("mylog");
+	
 	public List<SintomasDTO> buscarSintomaPorInicial(String inicial){
+		
+		log.debug("Entramos en buscarsintoamporinicial service");
+		
 		List<SintomasDTO> lista_descripcion = new ArrayList<SintomasDTO>();
 		List<SintomasDTO> lista_sintomas = ListadoSintomas.listaSintomasCompleta();
 		String sintoma_descripcion = null;
@@ -18,6 +25,8 @@ public class SintomasService {
 		String sintoma_desc_aux = null;
 		String palabra_sintoma = null;
 		int contador = 0;
+		
+		log.debug("Recorro lista de síntomas");
 		
 		for (SintomasDTO sintoma:lista_sintomas)
 		{
@@ -41,6 +50,8 @@ public class SintomasService {
 			encontrado = false;
 
 		}
+		
+		log.debug("FIN Recorro lista de síntomas");
 		
 		return lista_descripcion;
 	}
