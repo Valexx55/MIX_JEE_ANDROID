@@ -7,11 +7,14 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
 import dto.SintomasDTO;
 import servicios.Consultas;
 
 
 public class SintomasDAO  {
+	private final static Logger log = Logger.getLogger("mylog");
 
 	public static SintomasDTO componerObjeto (ResultSet rs) throws Exception
 	{
@@ -39,6 +42,7 @@ public class SintomasDAO  {
 			
 			pool = Pool.getInstance();
 			con = pool.getConnection();
+			log.debug ("Conexion establecida");
 			st = con.createStatement();
 			rs = st.executeQuery(Consultas.CONSULTA_TODOS_SINTOMAS);
 			
@@ -49,6 +53,7 @@ public class SintomasDAO  {
 				}
 			
 		} catch (Exception e) {
+			log.error("FALLO AL OBTENER LOS SINTOMAS: ",e);
 			e.printStackTrace();
 		} finally {
 			
