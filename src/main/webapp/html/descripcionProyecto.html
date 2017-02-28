@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--<link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />-->
+  <title>MIRATE_EL_OJO</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+      <title>W3.CSS</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    
+
+<link rel="stylesheet" href="/lib/w3.css">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/Estilos.css" media="screen" />
+    <link rel="icon" href="../img/logoico.ico">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+      body{direction:rtl;
+     background-image: url(../img/fondo.jpg);
+     background-color: rgb(255, 255, 255);
+     background-attachment: fixed;
+     background-repeat: repeat-x;
+     background-clip: content-box;
+     background-origin: content-box;
+     background-size: cover;
+     color:#5E6066;
+    font-family:GESSTwoLight,GESSTwoMediumRegular,Droid Arabic Kufi,Helvetica,sans-serif;
+    font-size:16px}
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color: skyblue;
+      padding: 25px;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="logo"> <img src="..\img\logo mirate.png"  width="165" height="55"> </a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="#">
+            <a href="home.html">Inicio</a></li>
+        <li><a href="patologias.html">Patologias</a></li>
+        <li><a href="test.html">Test</a></li>
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+     <p>
+    
+  </p>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<div ALIGN=center>
+<div class="btn btn-info">
+    
+   <button class="btn btn-info" onclick="cambiarIdioma('Arabe')">Árabe</button>
+   <button class="btn btn-info" onclick="cambiarIdioma('Ingles')">Inglés</button>
+  <button class="btn btn-info" onclick="cambiarIdioma('Español')">Español</button>
+  
+  
+</div>
+
+
+<div id="Ingles" class="w3-container idioma" style="display:none">
+  <span onclick="this.parentElement.style.display='none'";></span>
+  <h2>About</h2>
+  <h3>
+Visual Pathologies is a project carried out by the students of the course of information management systems taught in Femxa. This website helps us to know the practical visual pathologies and their diagnosis. In addition we can do a test without scientific rigor, to know that can be our visual problem.
+To carry out this project we have used the following technologies
+ <br> Java, Mysql, Html, JavaScript, phpMyAdmin, Openshift</h3> 
+    
+     
+         <video  width="560" controls>
+  <source src="../video/ConexionSSHenglish.mp4" type="video/mp4">
+     
+             </video>
+         <p>Inglés<img src="../png/gb.png" class="flag flag-cz"  /></p> 
+    
+</div>
+
+<div id="Español" class="w3-container idioma" style="display:none">
+  <span onclick="this.parentElement.style.display='none'";></span>
+  <h2>Sobre Nosotros</h2>
+ <h3> <p align="center">Patologias Visuales es un proyecto realizado por los alumnos del curso de sistemas de gestión de la informacion impartido en Femxa.Esta web nos ayudará a conocer las pricipales patologias visuales y su diagnóstico. Además podremos hacer un test sin rigor científico, para conocer cual puede ser nuestro problema visual.Para llevar a cabo este proyecto hemos utilizado las siguientes tecnologias<p align="center" >Java, Mysql, Html, JavaScript, phpMyAdmin, Openshift</p></h3> 
+     <video  width="560" controls>
+  <source src="../video/ConexionSSHespa.mp4" type="video/mp4">
+ 
+</video>
+      <p>Español <img src="../png/es.png" class="flag flag-cz"  /></p>
+</div>
+<div id="Arabe" class="w3-container idioma">
+  <span onclick="this.parentElement.style.display='none'";></span>
+  <h2>من نحن</h2>
+  <h3>تطبيق الأمراض البصرية هو مشروع تم انجازه من قبل طلاب دورة نظم المعلومات الادارية التابعة لفيمسا
+هذا الموقع سوف يساعدنا في التعرف على أساسيات الأمراض البصرية و تشخيصها
+كما سنقوم بعمل اختبار علمي لمعرفة الأسباب المحتملة للمرض
+لتنفيذ هذا المشروع استخدامنا التقنيات التالية</h3>
+   
+     <h3> Java, Mysql, Httml, JavaScript, phpMyAdmin, Openshift</h3>
+     
+          <video  width="560" controls>
+      <source src="../video/ConexionSSHarabe.mp4" type="video/mp4">
+      
+        </video>
+         <p>Árabe<img src="../png/ma.png" class="flag flag-cz"  /></p>
+    
+</div>
+<script>
+function cambiarIdioma(idioma) {
+    var i;
+    var x = document.getElementsByClassName("idioma");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+    }
+    document.getElementById(idioma).style.display = "block";  
+}
+    
+    
+window.onload = function () {
+ 
+   cambiarIdioma ("Español");
+    
+}
+    
+</script>
+
+
+   
+        
+   
+
+  </div>
+<br>
+<br>
+<br>
+<br>
+    
+<!--<center><p><strong></strong>Este es un video explicativo de nuestra aplicacion sobre Patologias Visuales, realizada por los alumnos en el curso de sistemas de gestion de la informacion. Es una pagina web desplegada en un servidor de openshift, 
+que hemos desarrollado en Eclipse como proyecto java EE. El concepto de la aplicacion esta relacionada con los problemas de vision, nos va a ayudar mediante la navegacion y haciendo un pequeño test
+nos diagnosticara sin rigor cientifico, sobre cual puede ser nuestro problema visual.</p></center>-->
+    
+
+<br>
+</body>
+
+</body>
+</html>
