@@ -115,4 +115,10 @@ public class PatologiasDTO
 	{
 		this.lista_sintomas.add(sintomadto);
 	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return this.id_patologia + " "+ this.nombre_patologia;
+	}
 }

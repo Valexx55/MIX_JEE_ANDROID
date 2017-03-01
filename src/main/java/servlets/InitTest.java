@@ -55,11 +55,12 @@ public class InitTest extends HttpServlet {
 			{
 				session.invalidate();
 				log.debug("Sesión preexistente. Se anula");
-			} else 
-			{
-				session = request.getSession(true);
-				log.debug("Sesión CREADA con id " + session.getId());
-			}
+			} 
+			
+			session = request.getSession(true);//creo una sesión nueva, siempre
+			log.debug("Sesión CREADA con id " + session.getId());
+			
+				
 			
 			
 			session.setAttribute("lista_sint", lista_sdto);

@@ -91,4 +91,10 @@ public class SintomasDTO
 	{
 		this.descripcion = nombre_sintoma;
 	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return this.id_sintoma + " " + this.getDescripcion() ;
+	}
 }
