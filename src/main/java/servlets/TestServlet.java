@@ -178,6 +178,7 @@ public class TestServlet extends HttpServlet {
 					
 				} 
 				
+				log.debug("Sale del WHILE");
 				if (!sintoma_seleccionado) //ninguno de los s�ntomas, est� presente en la lista de patolog�as candidatas
 				{
 					//case 0: //MENSAJE ERROR--> NO SABEMOS QU� TE PASA
