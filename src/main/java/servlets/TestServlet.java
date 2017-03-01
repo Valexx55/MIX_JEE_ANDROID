@@ -141,8 +141,9 @@ public class TestServlet extends HttpServlet {
 				int nsintomas = lista_sdto.size();
 				
 				log.debug("Nº Sintoma Actual = " +num_sintoma_actual);
+				log.debug("nsintomas = " +nsintomas);
 				
-				while (!sintoma_seleccionado && (num_sintoma_actual < (nsintomas-1)));
+				while ((!sintoma_seleccionado) && (num_sintoma_actual < (nsintomas-1)));
 				{
 					log.debug("Buscando entre " + nsintomas + " sintomas");
 					
