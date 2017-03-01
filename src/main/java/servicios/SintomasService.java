@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
+import dao.SintomasDAO;
 import dto.ListadoSintomas;
 import dto.SintomasDTO;
 
@@ -72,4 +73,13 @@ public class SintomasService {
     	
         return palabrasSeparadas;
     }
+    
+    public List<SintomasDTO> listarSintomasOrdenados()
+	{	
+		List<SintomasDTO> lista_sintomas = null;
+		
+			lista_sintomas = SintomasDAO.getSintomasOrdenados(); 
+		
+		return lista_sintomas;
+	}
 }

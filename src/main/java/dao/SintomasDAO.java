@@ -6,9 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.apache.log4j.Logger;
-
 import dto.SintomasDTO;
 import servicios.Consultas;
 
@@ -64,6 +62,44 @@ public class SintomasDAO  {
 		return lista_sint;
 		
 	}
+	
+	public static ArrayList<SintomasDTO> getSintomasOrdenados() {
+		
+		ArrayList<SintomasDTO> lista = new ArrayList<SintomasDTO>();
+		SintomasDTO sint = null;
+		
+		ResultSet rset = null;
+		Pool.getInstance();
+		Connection conn=null;
+		conn=Pool.getConnection();
+		Statement stmt=null;
+		
+		try
+		{
+			
+		stmt=conn.createStatement();
+		rset = stmt.executeQuery("select * from Sintomas ORDER BY prioridad_sint");
+		
+		while (rset.next())
+		{
+			
+			sint = new SintomasDTO(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getInt(4));
+			lista.add(sint);
+		}
+		
+		}catch(SQLException e)
+		{
+				e.printStackTrace();
+		}
+		finally
+		{
+			Pool.liberarRecursos(conn, stmt, rset);
+		}
+		
+		return lista;
+		
+		
+		}
 		
 	
 }
