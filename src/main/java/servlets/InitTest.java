@@ -41,7 +41,16 @@ public class InitTest extends HttpServlet {
 		
 		List<SintomasDTO> lista_sdto = ss.listarSintomasOrdenados();
 		
-		HttpSession session = request.getSession(true);
+		HttpSession session = request.getSession(false);
+		if (session != null) 
+		{
+			session.invalidate();
+		} else 
+		{
+			session = request.getSession(true);
+		}
+		
+		
 		session.setAttribute("lista_sint", lista_sdto);
 		session.setAttribute("mapa_patologias", mapa_patolog_candidatas);
 		session.setAttribute("num_sintoma_actual", sintoma_actual);

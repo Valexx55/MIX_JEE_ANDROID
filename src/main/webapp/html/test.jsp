@@ -19,7 +19,11 @@
 	  
   }
   
-  document.onHistoryGo = function() { open("ResetSession", "_self");}
+  
+  window.onbeforeunload = function (e) {
+	  open("InitTest", "_self");
+   };
+ // document.onHistoryGo = function() { open("InitTest", "_self");}
   
   </script>
   
@@ -65,7 +69,7 @@
         <li class="#">
             <a href="home.html">Inicio</a></li>
         <li><a href="patologias.html">Patologias</a></li>
-        <li><a href="test.html">Test</a></li>
+        <li><a href="../InitTest">Test</a></li>
         
       </ul>
       <ul class="nav navbar-nav navbar-right">

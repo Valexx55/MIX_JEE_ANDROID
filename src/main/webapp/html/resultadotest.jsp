@@ -12,7 +12,10 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   
   <script type="text/javascript">
-  document.onHistoryGo = function() { open("ResetSession", "_self");}
+  window.onbeforeunload = function (e) {
+	  open("InitTest", "_self");
+   };
+  //document.onHistoryGo = function() { open("InitTest", "_self");}
   </script>
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
@@ -57,7 +60,7 @@ body{direction:rtl;
         <li class="#">
             <a href="html/home.html">Inicio</a></li>
         <li><a href="html/patologias.html">Patologias</a></li>
-        <li><a href="html/test.html">Test</a></li>
+        <li><a href="../InitTest">Test</a></li>
         
       </ul>
       <ul class="nav navbar-nav navbar-right">

@@ -55,20 +55,11 @@ public class TestServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		HttpSession session = request.getSession(false);
-		/*if (session == null)
+		if (session == null)
 		{
 			//caso especial, el usuario a heehco uan petición sin pasar por init test
-			SintomasService ss = new SintomasService();
-			MapaPatologiasCandidatas mapa_patolog_candidatas = new MapaPatologiasCandidatas();
-			int sintoma_actual = 0;
-			
-			List<SintomasDTO> lista_sdto = ss.listarSintomasOrdenados();
-			
-			session = request.getSession(true);
-			session.setAttribute("lista_sint", lista_sdto);
-			session.setAttribute("mapa_patologias", mapa_patolog_candidatas);
-			session.setAttribute("num_sintoma_actual", sintoma_actual);
-		} */
+			response.sendRedirect("/InitTest");
+		} 
 		
 		
 		String respuesta = request.getParameter("resp");
@@ -151,7 +142,7 @@ public class TestServlet extends HttpServlet {
 					num_sintoma_actual = num_sintoma_actual + 1;
 				}
 				
-			} while (!sintoma_seleccionado && num_sintoma_actual < nsintomas);
+			} while (!sintoma_seleccionado && num_sintoma_actual < (nsintomas-1));
 			
 			if (!sintoma_seleccionado) //ninguno de los s�ntomas, est� presente en la lista de patolog�as candidatas
 			{
