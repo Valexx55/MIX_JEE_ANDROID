@@ -19,6 +19,8 @@
 	  
   }
   
+  document.onHistoryGo = function() { open("InitTest", "_self"); }
+  
   </script>
   
     
