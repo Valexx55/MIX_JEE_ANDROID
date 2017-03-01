@@ -20,7 +20,7 @@
   }
   
   
-  window.onbeforeunload = function (e) {
+  window.onHistoryGo = function (e) {
 	  window.location.href = 'http://femxa-ebtm.rhcloud.com/InitTest';
 	  location.reload(true);
    };

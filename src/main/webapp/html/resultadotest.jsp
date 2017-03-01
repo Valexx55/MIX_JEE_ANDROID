@@ -12,7 +12,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   
   <script type="text/javascript">
-  window.onbeforeunload = function (e) {
+  window.onHistoryGo = function (e) {
 	  window.location.href = 'http://femxa-ebtm.rhcloud.com/InitTest';
 	  location.reload(true);
    };
