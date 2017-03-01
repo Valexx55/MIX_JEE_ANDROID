@@ -140,7 +140,8 @@ public class TestServlet extends HttpServlet {
 				boolean sintoma_seleccionado = false;
 				int nsintomas = lista_sdto.size();
 				
-				do{
+				while (!sintoma_seleccionado && (num_sintoma_actual < nsintomas-1));
+				{
 					log.debug("Buscando entre " + nsintomas + " sintomas");
 					
 					num_sintoma_actual = num_sintoma_actual + 1;
@@ -172,8 +173,7 @@ public class TestServlet extends HttpServlet {
 						num_sintoma_actual = num_sintoma_actual + 1;
 					}
 					
-					
-				} while (!sintoma_seleccionado && (num_sintoma_actual < (nsintomas-1)));
+				} 
 				
 				if (!sintoma_seleccionado) //ninguno de los s�ntomas, est� presente en la lista de patolog�as candidatas
 				{
