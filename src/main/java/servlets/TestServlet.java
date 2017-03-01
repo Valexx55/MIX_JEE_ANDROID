@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import servicios.SintomasService;
 import dto.MapaPatologias;
 import dto.MapaPatologiasCandidatas;
 import dto.PatologiasDTO;
@@ -53,8 +54,24 @@ public class TestServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		String respuesta = request.getParameter("resp");
 		HttpSession session = request.getSession(false);
+		if (session == null)
+		{
+			//caso especial, el usuario a heehco uan petición sin pasar por init test
+			SintomasService ss = new SintomasService();
+			MapaPatologiasCandidatas mapa_patolog_candidatas = new MapaPatologiasCandidatas();
+			int sintoma_actual = 0;
+			
+			List<SintomasDTO> lista_sdto = ss.listarSintomasOrdenados();
+			
+			session = request.getSession(true);
+			session.setAttribute("lista_sint", lista_sdto);
+			session.setAttribute("mapa_patologias", mapa_patolog_candidatas);
+			session.setAttribute("num_sintoma_actual", sintoma_actual);
+		} 
+		
+		
+		String respuesta = request.getParameter("resp");
 		List<SintomasDTO> lista_sdto = (List<SintomasDTO>) session.getAttribute("lista_sint");
 		MapaPatologiasCandidatas mapa_patolog_candidatas = (MapaPatologiasCandidatas) session.getAttribute("mapa_patologias");
 		int num_sintoma_actual = (Integer) session.getAttribute("num_sintoma_actual");
