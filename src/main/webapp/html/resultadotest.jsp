@@ -13,7 +13,8 @@
   
   <script type="text/javascript">
   window.onbeforeunload = function (e) {
-	  open("InitTest", "_self");
+	  window.location.href = 'http://femxa-ebtm.rhcloud.com/InitTest';
+	  location.reload(true);
    };
   //document.onHistoryGo = function() { open("InitTest", "_self");}
   </script>
