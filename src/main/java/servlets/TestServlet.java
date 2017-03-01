@@ -143,40 +143,40 @@ public class TestServlet extends HttpServlet {
 				log.debug("Nº Sintoma Actual = " +num_sintoma_actual);
 				log.debug("nsintomas = " +nsintomas);
 				
-				while ((!sintoma_seleccionado) && (num_sintoma_actual < (nsintomas-1)));
+				num_sintoma_actual = num_sintoma_actual + 1;
+				
+				if (num_sintoma_actual < nsintomas)
 				{
-					log.debug("Buscando entre " + nsintomas + " sintomas");
-					
-					num_sintoma_actual = num_sintoma_actual + 1;
-					
-					log.debug("Sintoma actual " + num_sintoma_actual);
-					SintomasDTO sintomaactual = lista_sdto.get(num_sintoma_actual);
-					
-					log.debug("Sintoma actual " + sintomaactual.toString());
-					
-					boolean sintoma_presente = false;
-					PatologiasDTO paux = null;
-					Iterator<Integer> itm = mapa_patolog_resultado.keySet().iterator();
-					
-					
-					while (!sintoma_presente && itm.hasNext())
+					do
 					{
-						paux = mapa_patolog_resultado.get(itm.next());
-						sintoma_presente = mapa_patolog_candidatas.sintomaEnPatologia(sintomaactual, paux);
-					}
 					
-					if (sintoma_presente)
-					{
-						log.debug("Sintoma presente en  " + paux.toString());
-						sintoma_seleccionado = true;
-					} else
-					{
-						log.debug("Sintoma no presente en ninguna patol candidata " + sintomaactual.toString());
-						log.debug("Buscando el siguiente " + sintomaactual.toString());
-						num_sintoma_actual = num_sintoma_actual + 1;
-					}
-					
-				} 
+						SintomasDTO sintomaactual = lista_sdto.get(num_sintoma_actual);
+						log.debug("Sintoma actual " + sintomaactual.toString());
+						
+						boolean sintoma_presente = false;
+						PatologiasDTO paux = null;
+						Iterator<Integer> itm = mapa_patolog_resultado.keySet().iterator();
+						
+						while (!sintoma_presente && itm.hasNext())
+						{
+							paux = mapa_patolog_resultado.get(itm.next());
+							sintoma_presente = mapa_patolog_candidatas.sintomaEnPatologia(sintomaactual, paux);
+						}
+						
+						if (sintoma_presente)
+						{
+							log.debug("Sintoma presente en  " + paux.toString());
+							sintoma_seleccionado = true;
+						} else
+						{
+							log.debug("Sintoma no presente en ninguna patol candidata " + sintomaactual.toString());
+							log.debug("Buscando el siguiente ");
+							num_sintoma_actual = num_sintoma_actual + 1;
+						}
+					}while ((!sintoma_seleccionado) && (num_sintoma_actual < nsintomas));
+				}
+				
+				
 				
 				log.debug("Sale del WHILE");
 				if (!sintoma_seleccionado) //ninguno de los s�ntomas, est� presente en la lista de patolog�as candidatas
