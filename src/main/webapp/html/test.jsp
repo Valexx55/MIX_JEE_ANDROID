@@ -19,7 +19,7 @@
 	  
   }
   
-  document.onHistoryGo = function() { window.location = "http://femxa-ebtm.rhcloud.com/ResetSession"; }
+  document.onHistoryGo = function() { open("ResetSession", "_self");}
   
   </script>
   

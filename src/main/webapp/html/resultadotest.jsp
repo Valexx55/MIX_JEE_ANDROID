@@ -12,7 +12,7 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   
   <script type="text/javascript">
-  document.onHistoryGo = function() { window.location = "http://femxa-ebtm.rhcloud.com/ResetSession"; }
+  document.onHistoryGo = function() { open("ResetSession", "_self");}
   </script>
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
