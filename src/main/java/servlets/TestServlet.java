@@ -185,8 +185,7 @@ public class TestServlet extends HttpServlet {
 					log.debug("Llegué al final y no está presente en ninguna patol ABANDONO  ");
 					session.invalidate();
 					log.debug("Sesión invalidada");
-					request.setAttribute("pregunta", "PREGUNTE A SU MEDICO");
-					request.getRequestDispatcher(".//html//test.jsp").forward(request, response);	
+					request.getRequestDispatcher(".//html//resultadotestnegativo.jsp").forward(request, response);	
 				} else
 				{
 					log.debug("Síntoma encontrado  ");
