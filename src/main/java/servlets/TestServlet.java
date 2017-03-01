@@ -55,7 +55,7 @@ public class TestServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		
 		HttpSession session = request.getSession(false);
-		if (session == null)
+		/*if (session == null)
 		{
 			//caso especial, el usuario a heehco uan petición sin pasar por init test
 			SintomasService ss = new SintomasService();
@@ -68,7 +68,7 @@ public class TestServlet extends HttpServlet {
 			session.setAttribute("lista_sint", lista_sdto);
 			session.setAttribute("mapa_patologias", mapa_patolog_candidatas);
 			session.setAttribute("num_sintoma_actual", sintoma_actual);
-		} 
+		} */
 		
 		
 		String respuesta = request.getParameter("resp");
@@ -77,7 +77,7 @@ public class TestServlet extends HttpServlet {
 		int num_sintoma_actual = (Integer) session.getAttribute("num_sintoma_actual");
 		
 		Map<Integer, PatologiasDTO> mapa_patolog_resultado = null;
-		
+		//TODO SI NO HAY RESPUESTA, REDIRIGIR A INICIO O MANDAR A PÁGINA DE ERROR
 		
 		if(respuesta.equals("SI"))
 		{
