@@ -73,7 +73,7 @@ body{direction:rtl;
 <div class="container">
   <h1 align="center" dir="ltr">USTED TIENE:</h1>
             
-    <br><br><h2 align="center"> <a href="BuscarPatologia?id=${pregunta.id}" >${pregunta.nombre} </a></h2>
+    <br><br><h2 align="center"> <a href="BuscarPatologia?id=${patologia.id_patologia}" >${patologia.nombre_patologia} </a></h2>
     
     </div>
 

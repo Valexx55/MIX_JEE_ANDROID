@@ -94,7 +94,7 @@ public class TestServlet extends HttpServlet {
 			Iterator<Integer> it = mapa_patolog_resultado.keySet().iterator();
 			PatologiasDTO patologia_ganadora = mapa_patolog_resultado.get (it.next()); 
 			
-			request.setAttribute("pregunta", patologia_ganadora); //lista_sdto.get(num_sintoma_actual).getPregunta_web());
+			request.setAttribute("patologia", patologia_ganadora); //lista_sdto.get(num_sintoma_actual).getPregunta_web());
 			session.invalidate();
 			request.getRequestDispatcher(".//html//resultadotest.jsp").forward(request, response);	
 			//cerrar sesi�n --> session.invalidate();
