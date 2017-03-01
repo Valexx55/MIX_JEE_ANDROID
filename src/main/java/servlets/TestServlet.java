@@ -164,7 +164,7 @@ public class TestServlet extends HttpServlet {
 					
 					if (sintoma_presente)
 					{
-						log.debug("Sintoma presente en   " + paux.toString());
+						log.debug("Sintoma presente en  " + paux.toString());
 						sintoma_seleccionado = true;
 					} else
 					{
