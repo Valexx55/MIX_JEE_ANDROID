@@ -5,12 +5,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
-
 
 public class MapaPatologiasCandidatas {
 	
-	private final static Logger log = Logger.getLogger("mylog");
 	
 	public  Map<Integer, PatologiasDTO> mapa_patologias_candidatas;
 
@@ -49,7 +46,6 @@ public class MapaPatologiasCandidatas {
 		do
 		{
 			sintoma_aux = lista.get(pos_actual);
-			
 			if(sintoma_aux.equals(sintoma))
 			{
 				pertenece = true;
@@ -59,10 +55,8 @@ public class MapaPatologiasCandidatas {
 				pos_actual = pos_actual + 1;
 			}
 		}
-		
 		while(!pertenece && (pos_actual < n_sintomas));
-		
-		log.debug ("SintomaDTO en PatologiaDTO existe");
+			
 		
 		return pertenece;
 	}
@@ -83,11 +77,8 @@ public class MapaPatologiasCandidatas {
 			{
 				mapa_filtrado.put(patodto_aux.getId_patologia(), patodto_aux);
 			}
-			
-			
-		}
 		
-		log.debug ("Mapa PatologiaDTO candidatas filtradas");
+		}
 		
 		return mapa_filtrado;
 	}

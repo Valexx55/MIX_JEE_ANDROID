@@ -46,6 +46,7 @@ public class SintomasService {
 	        	{
 	        		lista_descripcion.add(sintoma);
 	        		encontrado = true;
+	        		
 	        	}
 	        	
 	        	contador ++;
@@ -68,14 +69,18 @@ public class SintomasService {
 	
     public static String[] separarFrase(String frase_introducida) {
 
+    	log.debug("Se separa la frase por delimitadores");
+    	
     	String delimitadores= "[ .,;?!��\'\"\\[\\]]+";
     	String[] palabrasSeparadas = frase_introducida.split(delimitadores);
     	
+    	log.debug("Se devuelve la frase separada");
         return palabrasSeparadas;
     }
     
     public List<SintomasDTO> listarSintomasOrdenados()
 	{	
+    	log.debug("Se listan los sintomas y se devuelven ordenados");
 		List<SintomasDTO> lista_sintomas = null;
 		
 			lista_sintomas = SintomasDAO.getSintomasOrdenados(); 

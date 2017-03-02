@@ -3,13 +3,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
-
 import dto.PatologiasDTO;
 
 public class MapaPatologias {
-	
-	private final static Logger log = Logger.getLogger("mylog");
 	
 	private static Map<Integer, PatologiasDTO> mapapatologia;
 
@@ -72,8 +68,6 @@ public class MapaPatologias {
 				{
 					mapa_resultado.put(pauxi.getId_patologia(), pauxi);
 				}
-				
-				log.debug ("HashMap PatologiasDTO creado");
 				
 			}
 		

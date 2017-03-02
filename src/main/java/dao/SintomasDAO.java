@@ -40,7 +40,7 @@ public class SintomasDAO  {
 			
 			pool = Pool.getInstance();
 			con = pool.getConnection();
-			log.debug ("Conexion establecida");
+			log.error ("Conexion establecida");
 			st = con.createStatement();
 			rs = st.executeQuery(Consultas.CONSULTA_TODOS_SINTOMAS);
 			
@@ -80,8 +80,6 @@ public class SintomasDAO  {
 		stmt=conn.createStatement();
 		rset = stmt.executeQuery("select * from Sintomas ORDER BY prioridad_sint");
 		
-		log.debug ("Consulta de la base de datos");
-		
 		while (rset.next())
 		{
 			
@@ -92,12 +90,10 @@ public class SintomasDAO  {
 		}catch(SQLException e)
 		{
 				e.printStackTrace();
-				log.error ("Error al intentar hacer la consulta", e);
 		}
 		finally
 		{
 			Pool.liberarRecursos(conn, stmt, rset);
-			log.debug ("Liberar recursos");
 		}
 		
 		return lista;

@@ -37,7 +37,7 @@ public class BuscarPatologiasPorIdSintoma extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-		
+		log.debug("Se listan PatologiasDTO por Sintoma y se deuelven como Json");
 		String valorSintoma = request.getParameter("sintomaIntroducido");
 		int id_sintoma = Integer.parseInt(valorSintoma);
 		
