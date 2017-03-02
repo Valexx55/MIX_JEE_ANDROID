@@ -23,6 +23,21 @@
       margin-bottom: 0;
       border-radius: 0;
     }
+.embed-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+     width: 100%;
+    height: 100%;
+    
+}
+.embed-container iframe {
+    position: relative;
+    top:20;
+    left: 20;
+   
+}
       body{direction:rtl;
      background-image: url(../img/fondo.jpg);
      background-color: rgb(255, 255, 255);
@@ -51,7 +66,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="logo" href="home.html"> <img src="..\img\logo mirate.png"  width="165" height="55"> </a>
+      <a class="logo"> <img src="..\img\logo mirate.png"  width="165" height="55"> </a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
@@ -59,11 +74,15 @@
             <a href="home.html">Inicio</a></li>
         <li><a href="patologias.html">Patologias</a></li>
         <li><a href="test.html">Test</a></li>
+          <li><a href="../html/descripcionProyecto.html">Acerca de</a></li>
         
       </ul>
       <ul class="nav navbar-nav navbar-right">
      <p>
-    
+        <button type="button" class="btn btn-info">
+        <a href="busqueda.html">  
+            <span class="glyphicon glyphicon-search"></span> BÚSQUEDA</a>
+    </button>
   </p>
       </ul>
     </div>
@@ -74,9 +93,9 @@
 <div ALIGN=center>
 <div class="btn btn-info">
     
-   <button class="btn btn-info" onclick="cambiarIdioma('Arabe')">Árabe</button>
-   <button class="btn btn-info" onclick="cambiarIdioma('Ingles')">Inglés</button>
-  <button class="btn btn-info" onclick="cambiarIdioma('Español')">Español</button>
+    <button class="btn btn-info" onclick="cambiarIdioma('Arabe')">Árabe</button>
+    <button class="btn btn-info" onclick="cambiarIdioma('Ingles')">Inglés</button>
+    <button class="btn btn-info" onclick="cambiarIdioma('Español')">Español</button>
   
   
 </div>
@@ -84,39 +103,48 @@
 
 <div id="Ingles" class="w3-container idioma" style="display:none">
   <span onclick="this.parentElement.style.display='none'";></span>
-  <h2>About</h2>
+  <h2>About us</h2>
   <h3>
-Visual Pathologies is a project carried out by the students of the course of information management systems taught in Femxa. This website helps us to know the practical visual pathologies and their diagnosis. In addition we can do a test without scientific rigor, to know that can be our visual problem.
-To carry out this project we have used the following technologies
+
+Openshift: is a free platform for application deployment, behaves like an administrator between infrastructure and software platforms, to facilitate the development of web applications. This allows the deployment of applications Java, JavaScript, Perl, PHP, Python and Ruby resulting in the execution of arbitrary code and the use of Framework. OpenShift supports a wide range of languages, Frameworks, Middleware, data sources and developer tools. Part of this technology we have used for this web project made by the students of the course Information Management Systems (Femxa). This website will help us to know the visual pathologies without medical rigor.Technologies used
  <br> Java, Mysql, Html, JavaScript, phpMyAdmin, Openshift</h3> 
-    
-     <iframe width="560" height="315" src="https://www.youtube.com/embed/mDdfMoTL5RM" frameborder="0" allowfullscreen></iframe>
+    <br>
+
+     <div class="embed-container">
+     <iframe width="460" height="290" src="https://www.youtube.com/embed/mDdfMoTL5RM" frameborder="0" allowfullscreen></iframe>
          <p>Inglés<img src="../png/gb.png" class="flag flag-cz"  /></p> 
-    
+          </div>
 </div>
 
 
-<div id="Arabe" class="w3-container idioma" style="display:none">
+<div id="Arabe" class="w3-container idioma"style="display:none">
   <span onclick="this.parentElement.style.display='none'";></span>
   <h2>من نحن</h2>
-  <h3>تطبيق الأمراض البصرية هو مشروع تم انجازه من قبل طلاب دورة نظم المعلومات الادارية التابعة لفيمسا
-هذا الموقع سوف يساعدنا في التعرف على أساسيات الأمراض البصرية و تشخيصها
-كما سنقوم بعمل اختبار علمي لمعرفة الأسباب المحتملة للمرض
-لتنفيذ هذا المشروع استخدامنا التقنيات التالية</h3>
+  <h3>هو منبر حر لنشر التطبيقات، يتصرف كمسؤول بين البنية التحتية ومنصات
+البرمجيات، لتسهيل تطوير تطبيقات الويب. وهذا يسمح للنشر تطبيقات جافا، جافا سكريبت، بيرل، بايثون
+روبي ويؤدي إلى تنفيذ تعليمات برمجية عشوائية واستخدام الإطار. وهو يدعم مجموعة واسعة من اللغات، والأطر،
+ الوسيطة ومصادر البيانات وأدوات المطورين. بعض من هذه التكنولوجيا التي استخدمت لهذا المشروع على شبكة الإنترنت التي أدلى بها
+إدارة نظم المعلومات دورة الطلاب. في هذا الموقع سوف تساعدنا على مواجهة الأمراض البصرية دون الصرامة الطبية.
+التقنيات المستخدمة:</h3>
    
      <h3> Java, Mysql, Httml, JavaScript, phpMyAdmin, Openshift</h3>
-     
-     <iframe width="560" height="315" src="https://www.youtube.com/embed/eNfhVl-qG4c" frameborder="0" allowfullscreen></iframe>>
+     <br>
+    <div class="embed-container">
+     <iframe width="460" height="290" src="https://www.youtube.com/embed/eNfhVl-qG4c" frameborder="0" allowfullscreen></iframe>
          <p>Árabe<img src="../png/ma.png" class="flag flag-cz"  /></p>
-    
-</div>
-    <div id="Español" class="w3-container idioma">
+         </div>
+    </div>
+
+    <div id="Español" class="w3-container idioma" >
   <span onclick="this.parentElement.style.display='none'";></span>
   <h2>Sobre Nosotros</h2>
- <h3> <p align="center">Patologias Visuales es un proyecto realizado por los alumnos del curso de sistemas de gestión de la informacion impartido en Femxa.Esta web nos ayudará a conocer las pricipales patologias visuales y su diagnóstico. Además podremos hacer un test sin rigor científico, para conocer cual puede ser nuestro problema visual.Para llevar a cabo este proyecto hemos utilizado las siguientes tecnologias<p align="center" >Java, Mysql, Html, JavaScript, phpMyAdmin, Openshift</p></h3> 
-   <iframe width="560" height="315" src="https://www.youtube.com/embed/9il55lJU47k" frameborder="0" allowfullscreen></iframe>
- 
-      <p>Español <img src="../png/es.png" class="flag flag-cz"  /></p>
+ <h3>Openshift: es una plataforma gratuita para el despliegue de aplicaciones, se comporta como un administrador entre la infraestructura  y las plataformas de software, para facilitar el desarrollo de aplicaciones web. Esta permite el despliege de aplicaciones Java, JavaScript, Perl, PHP, Python y Ruby dando lugar a la ejecución de código arbitrario y al uso de Framework. OpenShift soporta un amplio abanico de lenguajes, Frameworks, Middleware, fuentes de datos y herramientas de desarrollador. Parte de esta tecnologia la hemos utilizado para este proyecto web realizados por los alumnos del curso Sistemas de Gestion de la informacion(Femxa). Esta web nos ayudara a conocer las patologias visuales sin rigor medico.Tecnologias utilizadas 
+     <br>Java, Mysql, Html, JavaScript, phpMyAdmin, Openshift </h3>
+      <br>  
+        <div class="embed-container">
+   <iframe width="460" height="290" src="https://www.youtube.com/embed/9il55lJU47k" frameborder="0" allowfullscreen></iframe>
+      <p>Español <img src="../png/es.png" class="flag flag-cz" /></p>
+            </div>
 </div>
 <script>
 function cambiarIdioma(idioma) {
@@ -128,28 +156,18 @@ function cambiarIdioma(idioma) {
     document.getElementById(idioma).style.display = "block";  
 }
     
-/*   
+    
 window.onload = function () {
  
    cambiarIdioma ("Español");
     
-}*/
+}
     
 </script>
 
-
-   
-        
-   
-
   </div>
-<br>
-<br>
-<br>
-<br>
-    
-<br>
-</body>
+
+
 
 </body>
 </html>
