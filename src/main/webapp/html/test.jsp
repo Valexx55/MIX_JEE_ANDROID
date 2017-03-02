@@ -16,15 +16,7 @@
   function sendRespuesta (resp)
   {
 	  open("TestServlet?resp="+resp, "_self");
-	  
   }
-  
-  
-  window.onHistoryGo = function (e) {
-	  window.location.href = 'http://femxa-ebtm.rhcloud.com/InitTest';
-	  location.reload(true);
-   };
- // document.onHistoryGo = function() { open("InitTest", "_self");}
   
   </script>
   

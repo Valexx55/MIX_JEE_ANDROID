@@ -1,6 +1,7 @@
 package servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -47,7 +48,6 @@ public class InitTest extends HttpServlet {
 			SintomasService ss = new SintomasService();
 			MapaPatologiasCandidatas mapa_patolog_candidatas = new MapaPatologiasCandidatas();
 			int sintoma_actual = 0;
-			
 			List<SintomasDTO> lista_sdto = ss.listarSintomasOrdenados();
 			
 			HttpSession session = request.getSession(false);
@@ -55,13 +55,12 @@ public class InitTest extends HttpServlet {
 			{
 				session.invalidate();
 				log.debug("Sesión preexistente. Se anula");
-			} 
+			}
+			
+			
 			
 			session = request.getSession(true);//creo una sesión nueva, siempre
 			log.debug("Sesión CREADA con id " + session.getId());
-			
-				
-			
 			
 			session.setAttribute("lista_sint", lista_sdto);
 			log.debug("Lista sintomas " + lista_sdto.toString());
@@ -70,12 +69,7 @@ public class InitTest extends HttpServlet {
 			session.setAttribute("num_sintoma_actual", sintoma_actual);
 			log.debug("Sintoma / pregunta actual " + sintoma_actual + " " + lista_sdto.get(sintoma_actual).getPregunta_web() );
 			request.setAttribute("pregunta", lista_sdto.get(sintoma_actual).getPregunta_web()); //esto debería estar en el contexto
-
-			response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
-			response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
-			response.setHeader("Expires", "0"); // Proxies.
-			
-			
+			request.setAttribute("npregunta", sintoma_actual); //esto debería estar en el contexto
 			
 			request.getRequestDispatcher(".//html//test.jsp").forward(request, response);		
 		

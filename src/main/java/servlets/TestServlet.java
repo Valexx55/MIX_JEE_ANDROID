@@ -105,12 +105,6 @@ public class TestServlet extends HttpServlet {
 			
 			log.debug(mapa_patolog_resultado.size());
 			
-			response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
-			response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
-			response.setHeader("Expires", "0"); // Proxies.
-			
-			
-			
 			switch (npatols) {
 			case 0: 
 				log.debug("Sin patologias candidatas");

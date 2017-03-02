@@ -11,13 +11,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   
-  <script type="text/javascript">
-  window.onHistoryGo = function (e) {
-	  window.location.href = 'http://femxa-ebtm.rhcloud.com/InitTest';
-	  location.reload(true);
-   };
-  //document.onHistoryGo = function() { open("InitTest", "_self");}
-  </script>
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {

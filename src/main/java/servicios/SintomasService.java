@@ -63,9 +63,12 @@ public class SintomasService {
 		
 		return lista_descripcion;
 	}
-	
-	
-	
+
+	/**
+	 * Dada una frase introducida devuelve un array con las palabras que contiene
+	 * @param frase_introducida
+	 * @return
+	 */
     public static String[] separarFrase(String frase_introducida) {
 
     	String delimitadores= "[ .,;?!��\'\"\\[\\]]+";
