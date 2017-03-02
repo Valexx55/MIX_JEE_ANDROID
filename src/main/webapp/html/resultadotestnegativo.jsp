@@ -54,7 +54,7 @@ body{direction:rtl;
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="logo" href="home.html"> <img src="img\logo mirate.png"  width="165" height="55"> </a>
+      <a class="logo" href="html/home.html"> <img src="img\logo mirate.png"  width="165" height="55"> </a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
@@ -67,7 +67,7 @@ body{direction:rtl;
       <ul class="nav navbar-nav navbar-right">
      <p>
     <button type="button" class="btn btn-info">
-        <a href="busqueda.html">  
+        <a href="html/busqueda.html">  
             <span class="glyphicon glyphicon-search"></span> BÚSQUEDA</a>
     </button>
   </p>
