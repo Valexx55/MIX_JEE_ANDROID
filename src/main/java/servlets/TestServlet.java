@@ -80,7 +80,7 @@ public class TestServlet extends HttpServlet {
 				response.sendRedirect("/InitTest");	
 			}
 			
-			List<Integer> lista_sintomas_preguntados = (List<Integer>)request.getAttribute("lista_sintomas_preguntados");
+			List<Integer> lista_sintomas_preguntados = (List<Integer>)session.getAttribute("lista_sintomas_preguntados");
 			Integer npregunta = Integer.parseInt(request.getParameter("npreg"));
 			if (lista_sintomas_preguntados.contains(npregunta))
 			{
