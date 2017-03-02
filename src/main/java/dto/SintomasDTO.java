@@ -51,6 +51,7 @@ public class SintomasDTO
 		this.descripcion = descripcion;
 		this.pregunta_web = pregunta_web;
 		this.prioridad_sint = prioridad_sint;
+		log.debug(" Objeto sintomasDTO creado");
 	}
 
 	
@@ -96,5 +97,6 @@ public class SintomasDTO
 	public String toString() {
 		// TODO Auto-generated method stub
 		return this.id_sintoma + " " + this.getDescripcion() ;
+		
 	}
 }

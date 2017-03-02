@@ -7,10 +7,12 @@ li {
 li:HOVER
 {
 	cursor: pointer;
-	    width: 550px;
 	background-color: skyblue;
-	
 }
+
+
+
+
 
 ul {
 	margin: 3px 0px 0px 2px;
@@ -22,13 +24,11 @@ ul {
 	width: 800px;
 */
 
-#lista ul li {
-	
-	margin:0 auto;
-}
 
-.raizP{
+#raizP{
     
+    
+	width: 550px;
     font-size: 20px;
     
     margin-top:50px;
