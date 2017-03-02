@@ -71,6 +71,12 @@ public class InitTest extends HttpServlet {
 			log.debug("Sintoma / pregunta actual " + sintoma_actual + " " + lista_sdto.get(sintoma_actual).getPregunta_web() );
 			request.setAttribute("pregunta", lista_sdto.get(sintoma_actual).getPregunta_web()); //esto debería estar en el contexto
 
+			response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+			response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+			response.setHeader("Expires", "0"); // Proxies.
+			
+			
+			
 			request.getRequestDispatcher(".//html//test.jsp").forward(request, response);		
 		
 		} catch (Throwable t)
