@@ -50,6 +50,8 @@ public class InitTest extends HttpServlet {
 			int sintoma_actual = 0;
 			List<SintomasDTO> lista_sdto = ss.listarSintomasOrdenados();
 			
+			List<Integer> lista_sintomas_preguntados = new ArrayList<Integer>();
+			
 			HttpSession session = request.getSession(false);
 			if (session != null) 
 			{
@@ -69,8 +71,11 @@ public class InitTest extends HttpServlet {
 			session.setAttribute("num_sintoma_actual", sintoma_actual);
 			log.debug("Sintoma / pregunta actual " + sintoma_actual + " " + lista_sdto.get(sintoma_actual).getPregunta_web() );
 			request.setAttribute("pregunta", lista_sdto.get(sintoma_actual).getPregunta_web()); //esto debería estar en el contexto
+			
 			request.setAttribute("npregunta", sintoma_actual); //esto debería estar en el contexto
 			
+			
+			session.setAttribute("lista_sintomas_preguntados", lista_sintomas_preguntados);
 			request.getRequestDispatcher(".//html//test.jsp").forward(request, response);		
 		
 		} catch (Throwable t)

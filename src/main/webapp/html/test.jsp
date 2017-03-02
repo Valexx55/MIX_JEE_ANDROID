@@ -15,7 +15,8 @@
   <script type="text/javascript">
   function sendRespuesta (resp)
   {
-	  open("TestServlet?resp="+resp, "_self");
+	  var npreg = document.getElementById("npreg").innerHTML;
+	  open("TestServlet?resp="+resp+'&npreg='+npreg, "_self");
   }
   
   </script>
@@ -115,7 +116,7 @@
        
       <button type="button" class="btn btn-primary" onclick="sendRespuesta('NO');">NO</button>
       <button type="button" class="btn btn-default" onclick="sendRespuesta('SI');">SI </button>
-  
+      <div id="npreg" hidden>${npregunta}</div>
   
       </Center>
 </div>

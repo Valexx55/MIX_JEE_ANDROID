@@ -80,6 +80,20 @@ public class TestServlet extends HttpServlet {
 				response.sendRedirect("/InitTest");	
 			}
 			
+			List<Integer> lista_sintomas_preguntados = (List<Integer>)request.getAttribute("lista_sintomas_preguntados");
+			Integer npregunta = Integer.parseInt(request.getParameter("npreg"));
+			if (lista_sintomas_preguntados.contains(npregunta))
+			{
+				log.debug("Petición incorrecta (ha vuelto a preguntar lo mismo)");
+				log.debug("La lista contiene " + npregunta);
+				response.sendRedirect("/InitTest");	
+			}
+			else {
+				log.debug("La lista NO contiene " + npregunta);
+				lista_sintomas_preguntados.add(npregunta);
+			}
+			
+			
 			
 			List<SintomasDTO> lista_sdto = (List<SintomasDTO>) session.getAttribute("lista_sint");
 			MapaPatologiasCandidatas mapa_patolog_candidatas = (MapaPatologiasCandidatas) session.getAttribute("mapa_patologias");
@@ -191,9 +205,11 @@ public class TestServlet extends HttpServlet {
 					log.debug("Síntoma encontrado  ");
 					
 					MapaPatologiasCandidatas mapa_nuevo = new MapaPatologiasCandidatas (mapa_patolog_resultado);
+					session.setAttribute("lista_sintomas_preguntados", lista_sintomas_preguntados);
 					session.setAttribute("mapa_patologias", mapa_nuevo);//actualiza mapa en sesi�n
 					session.setAttribute("num_sintoma_actual", num_sintoma_actual);//actualiza n�mero de s�ntoma en sesi�n
 					//la lista de s�ntomas no se actualiza porque siempre es la misma.
+					request.setAttribute("npregunta", num_sintoma_actual); //esto debería estar en el contexto
 					request.setAttribute("pregunta", lista_sdto.get(num_sintoma_actual).getPregunta_web());
 					request.getRequestDispatcher(".//html//test.jsp").forward(request, response);	
 					//Y REDIRIGIR AL JSP CON LA PREGUNTA/SINTOMA SELECCIONADA
