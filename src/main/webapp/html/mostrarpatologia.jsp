@@ -47,14 +47,14 @@ body{direction:rtl;
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="logo" href="home.html"> <img src="img\logo mirate.png"  width="165" height="55"> </a>
+      <a class="logo" href="html/home.html"> <img src="img\logo mirate.png"  width="165" height="55"> </a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="#">
             <a href="html/home.html">Inicio</a></li>
         <li><a href="html/patologias.html">Patologias</a></li>
-        <li><a href="../InitTest.html">Test</a></li>
+        <li><a href="../InitTest">Test</a></li>
         
       </ul>
       <ul class="nav navbar-nav navbar-right">
