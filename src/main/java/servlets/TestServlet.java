@@ -69,7 +69,7 @@ public class TestServlet extends HttpServlet {
 			Integer npregunta = Integer.parseInt(request.getParameter("npreg"));
 
 			if ((session == null) || ((respuesta == null || respuesta == ""))
-					|| (lista_sintomas_preguntados.contains(npregunta))) {
+					|| (lista_sintomas_preguntados == null) || (lista_sintomas_preguntados.contains(npregunta))) {
 				// caso especial, el usuario a heehco uan petición sin pasar por
 				// init test
 				log.debug("Cliente sin sesión válida o  con petición incorrecta");
