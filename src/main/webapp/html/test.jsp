@@ -13,8 +13,16 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script type="text/javascript">
+ 
+  function ocultabotones ()
+  {
+	  document.getElementById("botonsi").style.visibility = 'hidden';
+	  document.getElementById("botonno").style.visibility = 'hidden'
+  }
+  
   function sendRespuesta (resp)
   {
+	  ocultabotones ();
 	  var npreg = document.getElementById("npreg").innerHTML;
 	  open("TestServlet?resp="+resp+'&npreg='+npreg, "_self");
   }
@@ -114,8 +122,9 @@
 <div class="container" >
   <Center>
        
-      <button type="button" class="btn btn-primary" onclick="sendRespuesta('NO');">NO</button>
-      <button type="button" class="btn btn-default" onclick="sendRespuesta('SI');">SI </button>
+       
+      <button id="botonno" type="button" class="btn btn-primary" onclick="sendRespuesta('NO');">NO</button>
+      <button id="botonsi" type="button" class="btn btn-default" onclick="sendRespuesta('SI');">SI </button>
       <div id="npreg" hidden>${npregunta}</div>
   
       </Center>

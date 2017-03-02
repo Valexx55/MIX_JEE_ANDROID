@@ -74,7 +74,7 @@ body{direction:rtl;
 <div class="container">
   <h1 align="center" dir="ltr">SINTOMATOLOGÍA DESCONOCIDA</h1>
             
-    <br><br><h2 align="center"> CONSULTE A SU FARMACÉUTICO </h2>
+    <br><br><h2 align="center"> CONSULTE A SU MÉDICO </h2>
     
     </div>
 
