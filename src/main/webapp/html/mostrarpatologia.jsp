@@ -47,20 +47,20 @@ body{direction:rtl;
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="logo"> <img src="img\logo mirate.png"  width="165" height="55"> </a>
+      <a class="logo" href="home.html"> <img src="img\logo mirate.png"  width="165" height="55"> </a>
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li class="#">
             <a href="html/home.html">Inicio</a></li>
         <li><a href="html/patologias.html">Patologias</a></li>
-        <li><a href="html/test.html">Test</a></li>
+        <li><a href="../InitTest.html">Test</a></li>
         
       </ul>
       <ul class="nav navbar-nav navbar-right">
      <p>
     <button type="button" class="btn btn-info">
-        <a href="busqueda.html">  
+        <a href="html/busqueda.html">  
             <span class="glyphicon glyphicon-search"></span> BÚSQUEDA</a>
     </button>
   </p>
