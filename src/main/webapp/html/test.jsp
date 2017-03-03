@@ -136,9 +136,9 @@
       <button id="botonno" type="button" class="btn btn-primary" onclick="sendRespuesta('NO');">NO</button>
       <button id="botonsi" type="button" class="btn btn-default" onclick="sendRespuesta('SI');">SI </button>
       <div id="npreg" hidden>${npregunta}</div>
-  	  <div id="loading" hidden>
-<img id="loading-image" src="https://lh3.googleusercontent.com/-OSDM4lOOEds/WLmMkNhLkzI/AAAAAAAAAeQ/sypLIoCs8gULcvVQ2qia-2g_0qr-F-dxgCL0B/h270/2017-03-03.gif" alt="Loading..." />
-</div>
+  	  
+	  <img id="loading" src="https://lh3.googleusercontent.com/-OSDM4lOOEds/WLmMkNhLkzI/AAAAAAAAAeQ/sypLIoCs8gULcvVQ2qia-2g_0qr-F-dxgCL0B/h270/2017-03-03.gif" alt="Loading..." />
+
   
   
       </Center>
