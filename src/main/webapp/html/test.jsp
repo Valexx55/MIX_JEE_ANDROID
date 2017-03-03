@@ -20,12 +20,22 @@
 	  document.getElementById("botonno").style.visibility = 'hidden'
   }
   
+  function gifEnEspera (){
+	  
+	  document.getElementById("loading").style.visibility = 'visible';
+	  
+  }
+  
+  
   function sendRespuesta (resp)
   {
 	  ocultabotones ();
+	  gifEnEspera ();
 	  var npreg = document.getElementById("npreg").innerHTML;
 	  open("TestServlet?resp="+resp+'&npreg='+npreg, "_self");
   }
+  
+  //window.onload = function(){ document.getElementById("loading").style.display = "none" }
   
   </script>
   
@@ -126,6 +136,10 @@
       <button id="botonno" type="button" class="btn btn-primary" onclick="sendRespuesta('NO');">NO</button>
       <button id="botonsi" type="button" class="btn btn-default" onclick="sendRespuesta('SI');">SI </button>
       <div id="npreg" hidden>${npregunta}</div>
+  	  <div id="loading" hidden>
+<img id="loading-image" src="https://lh3.googleusercontent.com/-OSDM4lOOEds/WLmMkNhLkzI/AAAAAAAAAeQ/sypLIoCs8gULcvVQ2qia-2g_0qr-F-dxgCL0B/h270/2017-03-03.gif" alt="Loading..." />
+</div>
+  
   
       </Center>
 </div>
