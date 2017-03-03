@@ -55,7 +55,7 @@ body{direction:rtl;
             <a href="html/home.html">Inicio</a></li>
         <li><a href="html/patologias.html">Patologias</a></li>
         <li><a href="../InitTest">Test</a></li>
-        
+        <li><a href="../html/descripcionProyecto.html">Acerca de</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
      <p>
