@@ -42,15 +42,18 @@ public class FiltroTest implements Filter {
 		// TODO Auto-generated method stub
 		// place your code here
 		long tiempoInicial = System.currentTimeMillis();
-		request.getServletContext().setAttribute("tiempo", tiempoInicial);
 		
 		chain.doFilter(request, response);
 
         long tiempoFinal = System.currentTimeMillis();
-        request.getServletContext().setAttribute("tiempo", tiempoFinal);
         
         long tiempo = tiempoFinal - tiempoInicial;
-        log.debug("Ha tardado "+tiempo);
+        
+        long tiempoTotal = (Long)(request.getServletContext().getAttribute("tiempoTotal"));
+        
+        request.getServletContext().setAttribute("tiempoTotal", tiempoTotal+tiempo);
+        log.debug("Ha tardado en esta petición "+tiempo);
+        log.debug("El tiempo total es "+tiempoTotal);
 	}
 	/**
 	 * @see Filter#init(FilterConfig)
