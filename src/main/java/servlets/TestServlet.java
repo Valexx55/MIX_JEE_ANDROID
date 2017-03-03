@@ -65,7 +65,7 @@ public class TestServlet extends HttpServlet {
 			HttpSession session = request.getSession(false);
 			
 			String respuesta = request.getParameter("resp");
-			List<Integer> lista_sintomas_preguntados = (List<Integer>) session.getAttribute("lista_sintomas_preguntados");
+			List<Integer> lista_sintomas_preguntados = null;
 			//super ñapa
 			if (session != null)
 				
