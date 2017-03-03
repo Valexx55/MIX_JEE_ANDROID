@@ -22,15 +22,14 @@
   
   function gifEnEspera (){
 	  
-	  document.getElementById("loading").style.visibility = 'visible';
-	  
+	  document.getElementById("divloading").style.display = 'block';
   }
   
   
   function sendRespuesta (resp)
   {
-	  ocultabotones ();
 	  gifEnEspera ();
+	  ocultabotones ();
 	  var npreg = document.getElementById("npreg").innerHTML;
 	  open("TestServlet?resp="+resp+'&npreg='+npreg, "_self");
   }
@@ -136,8 +135,10 @@
       <button id="botonno" type="button" class="btn btn-primary" onclick="sendRespuesta('NO');">NO</button>
       <button id="botonsi" type="button" class="btn btn-default" onclick="sendRespuesta('SI');">SI </button>
       <div id="npreg" hidden>${npregunta}</div>
-  	  
-	  <img hidden id="loading" src="https://lh3.googleusercontent.com/-OSDM4lOOEds/WLmMkNhLkzI/AAAAAAAAAeQ/sypLIoCs8gULcvVQ2qia-2g_0qr-F-dxgCL0B/h270/2017-03-03.gif" alt="Loading..." />
+  	  <div id="divloading" style="display:none">
+  	  <img id="loading" src="../img/espera.gif" alt="Loading..." />
+  	  </div>
+	  
 
   
   
