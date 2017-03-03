@@ -38,7 +38,8 @@ public class EscuchaInicioYFin implements ServletContextListener
     public void contextInitialized(ServletContextEvent arg0)  { 
 
     	log.error ("PROGRAMA INICIADO");
-    	arg0.getServletContext().setAttribute("tiempoTotal", 0);
+    	long tiempoCero = 0;
+    	arg0.getServletContext().setAttribute("tiempoTotal", tiempoCero);
     	try
     	{
     		log.error ("La conexion SSH queda iniciada");
