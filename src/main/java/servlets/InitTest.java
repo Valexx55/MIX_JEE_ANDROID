@@ -13,10 +13,9 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
+import dto.ListadoSintomas;
 import dto.MapaPatologiasCandidatas;
-import dto.Pregunta;
-import dto.SintomasDTO;
-import servicios.SintomasService;
+import dto.SintomaDTO;
 
 /**
  * Servlet implementation class ListarSintomasOrdenados
@@ -31,64 +30,38 @@ public class InitTest extends HttpServlet {
      */
     public InitTest() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		MapaPatologiasCandidatas mapa_patolog_candidatas = null;
+		int sintoma_actual = 0;
+		List<SintomaDTO> lista_sintomas_ordenados = null;
+		List<Integer> lista_sintomas_preguntados = null;
+		HttpSession session = null;
 		
-		try 
-		{
-			
+		
 			log.debug("Entrando en INIT_TEST");
 			
-			SintomasService ss = new SintomasService();
-			MapaPatologiasCandidatas mapa_patolog_candidatas = new MapaPatologiasCandidatas();
-			int sintoma_actual = 0;
-			List<SintomasDTO> lista_sdto = ss.listarSintomasOrdenados();
-			
-			List<Integer> lista_sintomas_preguntados = new ArrayList<Integer>();
-			
-			HttpSession session = request.getSession(false);
-			if (session != null) 
-			{
-				session.invalidate();
-				log.debug("Sesión preexistente. Se anula");
-			}
-			
-			
+			mapa_patolog_candidatas = new MapaPatologiasCandidatas();
+			lista_sintomas_ordenados = ListadoSintomas.getListado_sintomas_ordenado();
+			lista_sintomas_preguntados = new ArrayList<Integer>();
 			
 			session = request.getSession(true);//creo una sesión nueva, siempre
 			log.debug("Sesión CREADA con id " + session.getId());
 			
-			session.setAttribute("lista_sint", lista_sdto);
-			log.debug("Lista sintomas " + lista_sdto.toString());
-			session.setAttribute("mapa_patologias", mapa_patolog_candidatas);
-			log.debug("Mapa patologias candidatas " + mapa_patolog_candidatas.toString());
-			session.setAttribute("num_sintoma_actual", sintoma_actual);
-			log.debug("Sintoma / pregunta actual " + sintoma_actual + " " + lista_sdto.get(sintoma_actual).getPregunta_web() );
-			request.setAttribute("pregunta", lista_sdto.get(sintoma_actual).getPregunta_web()); //esto debería estar en el contexto
-			
-			request.setAttribute("npregunta", sintoma_actual); //esto debería estar en el contexto
-			
-			
+			session.setAttribute("mapa_patologias_candidatas", mapa_patolog_candidatas);
 			session.setAttribute("lista_sintomas_preguntados", lista_sintomas_preguntados);
+			
+			request.setAttribute("pregunta", lista_sintomas_ordenados.get(sintoma_actual).getPregunta_web()); 
+			request.setAttribute("npregunta", sintoma_actual); 
+			
 			request.getRequestDispatcher(".//html//test.jsp").forward(request, response);		
 		
-		} catch (Throwable t)
-		{
-			log.error("ERRORAZO", t);
-		}
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
 
 }

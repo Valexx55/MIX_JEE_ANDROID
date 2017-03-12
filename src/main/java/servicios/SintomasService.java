@@ -7,18 +7,18 @@ import org.apache.log4j.Logger;
 
 import dao.SintomasDAO;
 import dto.ListadoSintomas;
-import dto.SintomasDTO;
+import dto.SintomaDTO;
 
 public class SintomasService {
 
 	private final static Logger log = Logger.getLogger("mylog");
 	
-	public List<SintomasDTO> buscarSintomaPorInicial(String inicial){
+	public List<SintomaDTO> buscarSintomaPorInicial(String inicial){
 		
 		log.debug("Entramos en buscarsintoamporinicial service");
 		
-		List<SintomasDTO> lista_descripcion = new ArrayList<SintomasDTO>();
-		List<SintomasDTO> lista_sintomas = ListadoSintomas.listaSintomasCompleta();
+		List<SintomaDTO> lista_descripcion = new ArrayList<SintomaDTO>();
+		List<SintomaDTO> lista_sintomas = ListadoSintomas.getListado_sintomas();
 		String sintoma_descripcion = null;
 		String[] palabras_sintoma_descripcion = null;
 		boolean encontrado = false;
@@ -32,7 +32,7 @@ public class SintomasService {
 		try{
 			
 		
-		for (SintomasDTO sintoma:lista_sintomas)
+		for (SintomaDTO sintoma:lista_sintomas)
 		{
 			sintoma_descripcion = sintoma.getDescripcion();
 	        
@@ -81,10 +81,10 @@ public class SintomasService {
         return palabrasSeparadas;
     }
     
-    public List<SintomasDTO> listarSintomasOrdenados()
+    public List<SintomaDTO> listarSintomasOrdenados()
 	{	
     	log.debug("Se listan los sintomas y se devuelven ordenados");
-		List<SintomasDTO> lista_sintomas = null;
+		List<SintomaDTO> lista_sintomas = null;
 		
 			lista_sintomas = SintomasDAO.getSintomasOrdenados(); 
 		

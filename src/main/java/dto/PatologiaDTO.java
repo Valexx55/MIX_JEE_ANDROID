@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-public class PatologiasDTO
+public class PatologiaDTO
 {
 	private final static Logger log = Logger.getLogger("mylog");
 	
@@ -15,19 +15,19 @@ public class PatologiasDTO
 	private String tratamiento_patologia;
 	private String causa_patologia;
 	private String ruta_imagen_patologia;
-	private List <SintomasDTO> lista_sintomas;
+	private List <SintomaDTO> lista_sintomas;
 	
-	public PatologiasDTO buscarPatologiaPorID(int id)
+	public PatologiaDTO buscarPatologiaPorID(int id)
 	{
 		return null;
 	}
 	
-	public PatologiasDTO()
+	public PatologiaDTO()
 	{	
 		log.debug ("Patologias DTO");
 	}
 	
-	public PatologiasDTO(int id_patologia, String nombre_patologia,	String descripcion_patologia, 
+	public PatologiaDTO(int id_patologia, String nombre_patologia,	String descripcion_patologia, 
 			String tratamiento_patologia,String causa_patologia,String ruta_imagen_patologia) 
 	{
 		super();
@@ -37,7 +37,7 @@ public class PatologiasDTO
 		this.tratamiento_patologia = tratamiento_patologia;
 		this.causa_patologia = causa_patologia;
 		this.ruta_imagen_patologia = ruta_imagen_patologia;
-		this.lista_sintomas = new ArrayList<SintomasDTO>();
+		this.lista_sintomas = new ArrayList<SintomaDTO>();
 		log.debug ("Objeto Patologias DTO creado");
 	}
 
@@ -81,12 +81,12 @@ public class PatologiasDTO
 		this.tratamiento_patologia = tratamiento_patologia;
 	}
 	
-	public List<SintomasDTO> getLista_sintomas()
+	public List<SintomaDTO> getLista_sintomas()
 	{
 		return lista_sintomas;
 	}
 	
-	public void setLista_sintomas(List<SintomasDTO> lista_sintomas2)
+	public void setLista_sintomas(List<SintomaDTO> lista_sintomas2)
 	{
 		this.lista_sintomas = lista_sintomas2;
 	}
@@ -111,7 +111,7 @@ public class PatologiasDTO
 		this.ruta_imagen_patologia = ruta_imagen_patologia;
 	}
 
-	public void addSintoma (SintomasDTO sintomadto)
+	public void addSintoma (SintomaDTO sintomadto)
 	{
 		this.lista_sintomas.add(sintomadto);
 	}

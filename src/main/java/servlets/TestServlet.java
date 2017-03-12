@@ -1,27 +1,21 @@
 package servlets;
 
 import java.io.IOException;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import org.apache.log4j.Logger;
-
-import servicios.SintomasService;
+import dto.ListadoSintomas;
 import dto.MapaPatologias;
 import dto.MapaPatologiasCandidatas;
-import dto.PatologiasDTO;
-import dto.SintomasDTO;
+import dto.PatologiaDTO;
+import dto.SintomaDTO;
 
 /**
  * Servlet implementation class TestServlet
@@ -39,200 +33,148 @@ public class TestServlet extends HttpServlet {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	private void informarResultado (PatologiaDTO patologia_ganadora, HttpServletRequest request, HttpServletResponse response, HttpSession sesion) throws ServletException, IOException
+	{
+		sesion.invalidate();
+		
+		if (patologia_ganadora != null)
+		{
+			log.debug("FIN: PATOLOGIA ENCONTRADA");
 
-	private void mostrar(Map<Integer, PatologiasDTO> mapa) {
-		Iterator<Integer> it = mapa.keySet().iterator();
-		PatologiasDTO paux = null;
-		while (it.hasNext()) {
-			paux = mapa.get(it.next());
-			log.debug(paux.toString());
+			request.setAttribute("patologia", patologia_ganadora);
+			request.getRequestDispatcher(".//html//resultadotest.jsp").forward(request, response);
+		} else {
+			
+			log.debug("FIN: SIN PATOLOGIAS CANDIDATAS");
+			request.setAttribute("pregunta", "PATOLOGIA DESCONOCIDA /n CONSULTE A SU DOCTOR");
+			request.getRequestDispatcher(".//html//test.jsp").forward(request, response);
 		}
-
+		
 	}
 
+	private Map<Integer, PatologiaDTO> filtrar_patologias (String respuesta, MapaPatologiasCandidatas mapa_patolog_candidatas, int num_sintoma_actual)
+	{
+		Map<Integer, PatologiaDTO> mapa_resultado = null;
+		List<SintomaDTO> lista_sintomas_ordenados = ListadoSintomas.getListado_sintomas_ordenado();
+		
+		if (respuesta.equals("SI")) 
+		{
+			//si dijo sí, me quedo con las patologías que sí tienen ese síntoma, descartando el resto
+			mapa_resultado = mapa_patolog_candidatas.filtrarPatologiasCandidatas(mapa_patolog_candidatas.getMapa_patologias_candidatas(), lista_sintomas_ordenados.get(num_sintoma_actual));
+		} 
+		else 
+		{
+			//si dijo No, me quedo con las que NO, para lo cual me quedo con las que sí y hago la difrencia con el conjunto inicial (todas)
+			Map<Integer, PatologiaDTO> mapa_patolog_filtradas = mapa_patolog_candidatas.filtrarPatologiasCandidatas(mapa_patolog_candidatas.getMapa_patologias_candidatas(),lista_sintomas_ordenados.get(num_sintoma_actual));
+			mapa_resultado = MapaPatologias.diferencia(MapaPatologias.getMapapatologia(), mapa_patolog_filtradas);
+		}
+		
+		
+		return mapa_resultado;
+	}
+	
+	
+	private int obtenerSiguienteSintoma (int num_sintoma, Map<Integer, PatologiaDTO> mapa_patolog_resultado)
+	{
+		int n_sintoma_dev = -5;
+		boolean sintoma_seleccionado = false;
+		int nsintomas = ListadoSintomas.getListado_sintomas_ordenado().size();
+		
+		num_sintoma = num_sintoma + 1;
+		while ((!sintoma_seleccionado) && (num_sintoma < nsintomas))
+		{
+			SintomaDTO sintomaactual = ListadoSintomas.getListado_sintomas_ordenado().get(num_sintoma);
+			boolean sintoma_presente = false;
+			PatologiaDTO paux = null;
+			Iterator<Integer> itm = mapa_patolog_resultado.keySet().iterator();
+
+			while (!sintoma_presente && itm.hasNext()) 
+			{
+				paux = mapa_patolog_resultado.get(itm.next());
+				sintoma_presente = MapaPatologiasCandidatas.sintomaEnPatologia(sintomaactual, paux);
+			}
+
+			if (sintoma_presente) 
+				{
+					log.debug("Sintoma presente en  " + paux.toString());
+					sintoma_seleccionado = true;
+				} else {
+					log.debug("Sintoma no presente en ninguna patol candidata " + sintomaactual.toString());
+					log.debug("Buscando el siguiente ");
+					num_sintoma = num_sintoma + 1;
+				}
+		} 
+		
+
+		n_sintoma_dev = (num_sintoma == nsintomas) ? -1: num_sintoma; 
+		
+		return n_sintoma_dev;
+	}
+	
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-
-		try {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 	throws ServletException, IOException {
 
 			log.debug("ENTRNADO EN TEST_SERVLET");
 
 			HttpSession session = request.getSession(false);
 			
 			String respuesta = request.getParameter("resp");
-			List<Integer> lista_sintomas_preguntados = null;
-			//super ñapa
-			if (session != null)
-				
-			{
-				lista_sintomas_preguntados = (List<Integer>) session.getAttribute("lista_sintomas_preguntados");
-			}
+			MapaPatologiasCandidatas mapa_patolog_candidatas = (MapaPatologiasCandidatas) session.getAttribute("mapa_patologias_candidatas");
+			int num_sintoma_actual = (Integer) request.getAttribute("npregunta");
+			Map<Integer, PatologiaDTO> mapa_patolog_resultado = null;
 			
-			Integer npregunta = Integer.parseInt(request.getParameter("npreg"));
-			if ((session == null) || ((respuesta == null || respuesta == ""))
-					|| (lista_sintomas_preguntados == null) || (lista_sintomas_preguntados.contains(npregunta))) {
-				// caso especial, el usuario a heehco uan petición sin pasar por
-				// init test
-				log.debug("Cliente sin sesión válida o  con petición incorrecta");
-				response.sendRedirect("/InitTest");
+			mapa_patolog_resultado =  filtrar_patologias(respuesta, mapa_patolog_candidatas, num_sintoma_actual);
 
-			} else {
-
-				log.debug("Petición formalmente correctga");
-				lista_sintomas_preguntados.add(npregunta);
-
-				List<SintomasDTO> lista_sdto = (List<SintomasDTO>) session.getAttribute("lista_sint");
-				MapaPatologiasCandidatas mapa_patolog_candidatas = (MapaPatologiasCandidatas) session
-						.getAttribute("mapa_patologias");
-				int num_sintoma_actual = (Integer) session.getAttribute("num_sintoma_actual");
-
-				Map<Integer, PatologiasDTO> mapa_patolog_resultado = null;
-				// TODO SI NO HAY RESPUESTA, REDIRIGIR A INICIO O MANDAR A
-				// PÁGINA DE ERROR
-
-				if (respuesta.equals("SI")) {
-					mapa_patolog_resultado = mapa_patolog_candidatas.filtrarPatologiasCandidatas(
-							mapa_patolog_candidatas.getMapa_patologias_candidatas(),
-							lista_sdto.get(num_sintoma_actual));
-				} else // dijo que no
-				{
-					Map<Integer, PatologiasDTO> mapa_patolog_filtradas = mapa_patolog_candidatas
-							.filtrarPatologiasCandidatas(mapa_patolog_candidatas.getMapa_patologias_candidatas(),
-									lista_sdto.get(num_sintoma_actual));
-					mapa_patolog_resultado = MapaPatologias.diferencia(MapaPatologias.getMapapatologia(),
-							mapa_patolog_filtradas);
-				}
-
-				log.debug("MOSTRANDO PATOLOGIAS CANDIDATAS");
-				mostrar(mapa_patolog_resultado);
-				int npatols = mapa_patolog_resultado.size();
-
-				log.debug(mapa_patolog_resultado.size());
-
-				switch (npatols) {
+			int npatols =  (mapa_patolog_resultado==null) ? 0 : mapa_patolog_resultado.size();
+				
+			switch (npatols) 
+			{
 				case 0:
-					log.debug("Sin patologias candidatas");
-					session.invalidate();
-					log.debug("Sesión invalidada");
-					// MENSAJE ERROR--> NO SABEMOS QU� TE PASA
-					request.setAttribute("pregunta", "PREGUNTE A SU M�DICO");
-					request.getRequestDispatcher(".//html//test.jsp").forward(request, response);
-					break;
+				
+					informarResultado(null, request, response, session);
+				break;
 
 				case 1:
-
-					log.debug("Patolgia ENCONTRADA");
-					session.invalidate();
-					log.debug("Sesion invalidada");
-
+					
 					Iterator<Integer> it = mapa_patolog_resultado.keySet().iterator();
-					PatologiasDTO patologia_ganadora = mapa_patolog_resultado.get(it.next());
+					PatologiaDTO patologia_ganadora = mapa_patolog_resultado.get(it.next());
 
-					log.debug("Patolgia resultado 1" + patologia_ganadora.toString());
-
-					request.setAttribute("patologia", patologia_ganadora); // lista_sdto.get(num_sintoma_actual).getPregunta_web());
-					request.getRequestDispatcher(".//html//resultadotest.jsp").forward(request, response);
+					informarResultado(patologia_ganadora, request, response, session);
 
 					break;
 
-				default: // CASO POR DEFECTO --> + DE 1 PATOLOG�A CANDIDATA
+				default: // CASO POR DEFECTO --> quedan > 1 Patologia Candidata
 
 					log.debug("Queda más de una patol candidadata, buscando siguiente síntoma/pregunta");
 
-					boolean sintoma_seleccionado = false;
-					int nsintomas = lista_sdto.size();
-
-					log.debug("Nº Sintoma Actual = " + num_sintoma_actual);
-					log.debug("nsintomas = " + nsintomas);
-
-					num_sintoma_actual = num_sintoma_actual + 1;
-
-					if (num_sintoma_actual < nsintomas) {
-						do {
-
-							SintomasDTO sintomaactual = lista_sdto.get(num_sintoma_actual);
-							log.debug("Sintoma actual " + sintomaactual.toString());
-
-							boolean sintoma_presente = false;
-							PatologiasDTO paux = null;
-							Iterator<Integer> itm = mapa_patolog_resultado.keySet().iterator();
-
-							while (!sintoma_presente && itm.hasNext()) {
-								paux = mapa_patolog_resultado.get(itm.next());
-								sintoma_presente = mapa_patolog_candidatas.sintomaEnPatologia(sintomaactual, paux);
-							}
-
-							if (sintoma_presente) {
-								log.debug("Sintoma presente en  " + paux.toString());
-								sintoma_seleccionado = true;
-							} else {
-								log.debug("Sintoma no presente en ninguna patol candidata " + sintomaactual.toString());
-								log.debug("Buscando el siguiente ");
-								num_sintoma_actual = num_sintoma_actual + 1;
-							}
-						} while ((!sintoma_seleccionado) && (num_sintoma_actual < nsintomas));
-					}
-
-					log.debug("Sale del WHILE");
-					if (!sintoma_seleccionado) // ninguno de los s�ntomas, est�
-												// presente en la lista de
-												// patolog�as candidatas
+					num_sintoma_actual = obtenerSiguienteSintoma(num_sintoma_actual, mapa_patolog_resultado);
+					
+					if (num_sintoma_actual == -1) //se completó la lista de sintomas sin pregunta candidata 
 					{
-						// case 0: //MENSAJE ERROR--> NO SABEMOS QU� TE PASA
-						log.debug("Llegué al final y no está presente en ninguna patol ABANDONO  ");
-						session.invalidate();
-						log.debug("Sesión invalidada");
-						request.getRequestDispatcher(".//html//resultadotestnegativo.jsp").forward(request, response);
-					} else {
-						log.debug("Síntoma encontrado  ");
-
-						MapaPatologiasCandidatas mapa_nuevo = new MapaPatologiasCandidatas(mapa_patolog_resultado);
-						session.setAttribute("lista_sintomas_preguntados", lista_sintomas_preguntados);
-						session.setAttribute("mapa_patologias", mapa_nuevo);// actualiza
-																			// mapa
-																			// en
-																			// sesi�n
-						session.setAttribute("num_sintoma_actual", num_sintoma_actual);// actualiza
-																						// n�mero
-																						// de
-																						// s�ntoma
-																						// en
-																						// sesi�n
-						// la lista de s�ntomas no se actualiza porque siempre
-						// es la misma.
-						request.setAttribute("npregunta", num_sintoma_actual); // esto
-																				// debería
-																				// estar
-																				// en
-																				// el
-																				// contexto
-						request.setAttribute("pregunta", lista_sdto.get(num_sintoma_actual).getPregunta_web());
-						request.getRequestDispatcher(".//html//test.jsp").forward(request, response);
-						// Y REDIRIGIR AL JSP CON LA PREGUNTA/SINTOMA
-						// SELECCIONADA
+						informarResultado(null, request, response, session);
+					} 
+					else 
+					{
+						plantearSiguientePregunta (mapa_patolog_resultado, num_sintoma_actual, request, response, session);
 					}
 
 					break;
 				}
-			}
-		} catch (Throwable t) {
-			log.error("ERRORAZO", t);
-		}
-
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+	private void plantearSiguientePregunta (Map<Integer, PatologiaDTO> mapa_resultado, int num_sintoma_actual, HttpServletRequest request, HttpServletResponse response, HttpSession sesion) throws ServletException, IOException
+	{
+		MapaPatologiasCandidatas mapa_nuevo = new MapaPatologiasCandidatas(mapa_resultado);
+		sesion.setAttribute("mapa_patologias", mapa_nuevo);
+		request.setAttribute("npregunta", num_sintoma_actual); 
+		request.setAttribute("pregunta", ListadoSintomas.getListado_sintomas_ordenado().get(num_sintoma_actual).getPregunta_web());
+		request.getRequestDispatcher(".//html//test.jsp").forward(request, response);
 	}
+	
+
 
 }

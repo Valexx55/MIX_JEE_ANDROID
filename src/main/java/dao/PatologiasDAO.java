@@ -20,9 +20,9 @@ public class PatologiasDAO
 {
 	private final static Logger log = Logger.getLogger("mylog");
 	
-	public PatologiasDTO componerObjeto(ResultSet rs) throws SQLException
+	public PatologiaDTO componerObjeto(ResultSet rs) throws SQLException
 	{		
-		PatologiasDTO patologia_dto = null;
+		PatologiaDTO patologia_dto = null;
 		
 		int id_patologia = rs.getInt ("id_patol");
 		String nombre_patologia = rs.getString ("nom_patol");
@@ -31,7 +31,7 @@ public class PatologiasDAO
 		String causa_patologia = rs.getString ("causa_patol");
 		String ruta_imagen_patologia = rs.getString ("imagen");
 		
-		patologia_dto = new PatologiasDTO(id_patologia,nombre_patologia,descripcion_patologia,tratamiento_patologia,causa_patologia,ruta_imagen_patologia);
+		patologia_dto = new PatologiaDTO(id_patologia,nombre_patologia,descripcion_patologia,tratamiento_patologia,causa_patologia,ruta_imagen_patologia);
 		
 		return patologia_dto;
 	}
@@ -64,10 +64,10 @@ public class PatologiasDAO
 		return patologia;
 	}*/
 	
-	public Map<Integer, PatologiasDTO> obtenerListaPalogias ()
+	public Map<Integer, PatologiaDTO> obtenerListaPalogias ()
 	{
-		Map<Integer, PatologiasDTO> mapa_patologia = new HashMap<Integer, PatologiasDTO>();
-		PatologiasDTO pdto_aux = null;
+		Map<Integer, PatologiaDTO> mapa_patologia = new HashMap<Integer, PatologiaDTO>();
+		PatologiaDTO pdto_aux = null;
 		
 			 List<Integer> lids = obtenerIDsPatologias ();
 			 
@@ -82,14 +82,14 @@ public class PatologiasDAO
 		return mapa_patologia;
 	}
 	
-	public PatologiasDTO buscarPorId (int id)
+	public PatologiaDTO buscarPorId (int id)
 	{
-		PatologiasDTO patologiaDTO = null;
+		PatologiaDTO patologiaDTO = null;
 		Pool pool = null;
 		Connection conexion = null;
 		ResultSet rs = null;
 		PreparedStatement ps = null;
-		SintomasDTO sintomaDTO = null;
+		SintomaDTO sintomaDTO = null;
 	
 		try
 		{
@@ -107,7 +107,7 @@ public class PatologiasDAO
 			
 			if (rs.next())
 			{
-				patologiaDTO = (PatologiasDTO) componerObjeto(rs);
+				patologiaDTO = (PatologiaDTO) componerObjeto(rs);
 			}
 		
 			do

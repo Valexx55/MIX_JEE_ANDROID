@@ -20,19 +20,19 @@ public class ConsultorPatologiasService
 	/**  Se encarga de llamar a patologiasConSintoma o a patologiasSinSintoma en funcion de la respuesta
 	 * del usuario y devuelve la lista de patologias resultante  */
 	
-	public List<PatologiasDTO> controlDeTest (List<PatologiasDTO> listaPatologias,SintomasDTO sintoma,boolean respuestaDelUsuario)
+	public List<PatologiaDTO> controlDeTest (List<PatologiaDTO> listaPatologias,SintomaDTO sintoma,boolean respuestaDelUsuario)
 	{
 		return listaPatologias;
 	}
 	
 		/**	Devuelve una lista de patologias que SI tengan el sintoma introducido  */
-	public List<PatologiasDTO> patologiasConSintoma(List<PatologiasDTO> listaPatologias,SintomasDTO sintoma_incluido)
+	public List<PatologiaDTO> patologiasConSintoma(List<PatologiaDTO> listaPatologias,SintomaDTO sintoma_incluido)
 	{
-		List <PatologiasDTO> lista_devuelta = new ArrayList<PatologiasDTO>();
+		List <PatologiaDTO> lista_devuelta = new ArrayList<PatologiaDTO>();
 		ConsultorPatologiasService consultor = new ConsultorPatologiasService();
 			log.debug ("Lista Patologias DTO creada (sintomas incluidos en la lista)");
 		
-		for (PatologiasDTO patologia:listaPatologias)
+		for (PatologiaDTO patologia:listaPatologias)
 		{
 			if(consultor.comprobarSintomaEnPatologia(patologia, sintoma_incluido))
 			{
@@ -45,13 +45,13 @@ public class ConsultorPatologiasService
 	}
 	
 		/** Devuelve una lista de patologias que NO tengan el sintoma introducido */
-	public List<PatologiasDTO> patologiasSinSintoma(List<PatologiasDTO> listaPatologias,SintomasDTO sintoma_excluido)
+	public List<PatologiaDTO> patologiasSinSintoma(List<PatologiaDTO> listaPatologias,SintomaDTO sintoma_excluido)
 	{
-		List <PatologiasDTO> lista_devuelta = new ArrayList<PatologiasDTO>();
+		List <PatologiaDTO> lista_devuelta = new ArrayList<PatologiaDTO>();
 		ConsultorPatologiasService consultor = new ConsultorPatologiasService();
 			log.debug ("Lista Patologias DTO creada (sintomas excluidos de la lista)");
 		
-		for(PatologiasDTO patologia:listaPatologias)
+		for(PatologiaDTO patologia:listaPatologias)
 		{
 			if(!consultor.comprobarSintomaEnPatologia(patologia, sintoma_excluido))
 			{
@@ -64,11 +64,11 @@ public class ConsultorPatologiasService
 	}
 	
 		/**  Devuelve un true o false si la patologia tiene el sintoma introducido  */
-	public boolean comprobarSintomaEnPatologia(PatologiasDTO patologia,SintomasDTO sintoma_buscado)
+	public boolean comprobarSintomaEnPatologia(PatologiaDTO patologia,SintomaDTO sintoma_buscado)
 	{
 		boolean encontrado = false;
-		List<SintomasDTO> lista_sintomas = patologia.getLista_sintomas();
-		SintomasDTO sintoma_auxiliar = new SintomasDTO();
+		List<SintomaDTO> lista_sintomas = patologia.getLista_sintomas();
+		SintomaDTO sintoma_auxiliar = new SintomaDTO();
 		String nombre_sintoma = null;
 		String nombre_sintoma_buscado = sintoma_buscado.getDescripcion();
 		int contador = 0;
@@ -92,9 +92,9 @@ public class ConsultorPatologiasService
 	}
 	
 		/**  Dada una lista de Patologias se devuelve el sintoma mas comun de ellas */
-	public SintomasDTO sintomaAPreguntar(List<PatologiasDTO> lista_patologias)
+	public SintomaDTO sintomaAPreguntar(List<PatologiaDTO> lista_patologias)
 	{
-		SintomasDTO sintoma_pregunta = null;
+		SintomaDTO sintoma_pregunta = null;
 			log.debug ("Preguntando por los sintomas..");
 		return sintoma_pregunta;
 	}

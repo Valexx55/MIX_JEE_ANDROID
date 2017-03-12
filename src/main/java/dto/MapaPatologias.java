@@ -3,49 +3,51 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-import dto.PatologiasDTO;
+import dto.PatologiaDTO;
 
 public class MapaPatologias {
 	
-	private static Map<Integer, PatologiasDTO> mapapatologia;
+	private static Map<Integer, PatologiaDTO> mapapatologia;
+	
+	static 
+	{
+		mapapatologia = new HashMap<Integer, PatologiaDTO>();
+	}
+	
 
-	public static Map<Integer, PatologiasDTO> getMapapatologia() {
+	public static Map<Integer, PatologiaDTO> getMapapatologia() 
+	{
 		return mapapatologia;
 	}
 
-	public void setMapapatologia(Map<Integer, PatologiasDTO> mapapatologia) {
+	public static void setMapapatologia(Map<Integer, PatologiaDTO> mapapatologia) 
+	{
 		MapaPatologias.mapapatologia = mapapatologia;
 	}
 
-	public MapaPatologias() {
-		super();
-		mapapatologia = new HashMap<Integer, PatologiasDTO>();
-	}
 	
-	public void addPatologia (Integer id, PatologiasDTO pdto)
+	
+	public static void addPatologia (Integer id, PatologiaDTO pdto)
 	{
 		mapapatologia.put(id, pdto);
 	}
 	
-	public static  Map<Integer, PatologiasDTO> obtenerMapapatologia(){
-		return mapapatologia;
-	}
 	
-	public static PatologiasDTO getPatologia (Integer id)
+	public static PatologiaDTO getPatologia (Integer id)
 	{
 		return mapapatologia.get(id);
 	}
 	
 
-	public static Map<Integer, PatologiasDTO> diferencia (Map<Integer, PatologiasDTO> mapaInicial, Map<Integer, PatologiasDTO> mapaFiltrado)
+	public static Map<Integer, PatologiaDTO> diferencia (Map<Integer, PatologiaDTO> mapaInicial, Map<Integer, PatologiaDTO> mapaFiltrado)
 	{
-		Map<Integer, PatologiasDTO> mapa_resultado = null;
+		Map<Integer, PatologiaDTO> mapa_resultado = null;
 		
-			mapa_resultado = new HashMap<Integer, PatologiasDTO>();
+			mapa_resultado = new HashMap<Integer, PatologiaDTO>();
 			
 			
 			Iterator<Integer> itg= mapaInicial.keySet().iterator();
-			PatologiasDTO pauxi = null;
+			PatologiaDTO pauxi = null;
 			
 			
 			
@@ -56,7 +58,7 @@ public class MapaPatologias {
 				
 
 				Iterator<Integer> itp = mapaFiltrado.keySet().iterator();
-				PatologiasDTO pauxf = null;
+				PatologiaDTO pauxf = null;
 								
 				while (!encontrado && itp.hasNext()) 
 				{

@@ -1,20 +1,17 @@
 package controlador.listener;
 
-
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
-
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
-
 import org.apache.log4j.Logger;
-
 import dao.SintomasDAO;
 import dto.ListadoSintomas;
 import dao.PatologiasDAO;
 import dto.MapaPatologias;
-import dto.PatologiasDTO;
+import dto.PatologiaDTO;
+import dto.SintomaDTO;
 
 /**  Application Lifecycle Listener implementation class EscuchaInicioYFin  */
 	@WebListener
@@ -31,36 +28,58 @@ public class EscuchaInicioYFin implements ServletContextListener
 		/**  @see ServletContextListener#contextDestroyed(ServletContextEvent) */
     public void contextDestroyed(ServletContextEvent arg0) 
     { 
-    	log.error ("PROGRAMA FINALIZADO");
+    	log.info ("PROGRAMA FINALIZADO");
     }
 
-		/**  @see ServletContextListener#contextInitialized(ServletContextEvent) */
-    public void contextInitialized(ServletContextEvent arg0)  { 
+    /**
+	 * @param arg0 
+	 * 
+	 * Al iniciar la aplicación, precargamos desde la base de datos a memoria los datos maestros 
+	 * para agilizar el rendimiento. Estos son todas las patologías (en un MAPA), los síntomas, y los 
+	 * síntomas ordenados
+	 *  
+	 */
+    
+    /*
+	 * NOTA ACLARATORIA: SE SETEAN LOS DATOS MAESTROS EN OBJETOS ESTÁTICOS, PARA FACILITAR SU ACCESSO
+	 * DESDE TODAS LAS CLASES DE LA APLIACIÓN, A LO LARGO DEL CICLO DE VIDA
+	 * 
+	 * AUNQUE EL CONTEXTO SERÍA EL ÁMBITO IDONEO PARA ALMACENAR ESTAS VARIABLES, SE PREFIERE HACERLO
+	 * EN CLASES "NORMALES", PARA QUE SE PUEDA ACCEDER A ELLAS SIN NECESIDAD DE ESTAR EN UN SERVLET
+	 * 
+	 */
+    
+    public void contextInitialized(ServletContextEvent arg0)  
+    { 
+    	
+    	PatologiasDAO patologiaDAO = null;
+    	Map<Integer, PatologiaDTO> mapa_patologias = null;
+    	List<SintomaDTO> lista_sintomas = null;
+    	List<SintomaDTO> lista_sintomas_ordenados = null;
 
-    	log.error ("PROGRAMA INICIADO");
-    	long tiempoCero = 0;
-    	arg0.getServletContext().setAttribute("tiempoTotal", tiempoCero);
+    	log.info ("PROGRAMA INICIADO");
     	try
+    	
     	{
-    		log.error ("La conexion SSH queda iniciada");
+    		log.debug ("Precargando patologías y síntomas ..");
     		
-			PatologiasDAO patologiaDAO = new PatologiasDAO();
-			Map<Integer, PatologiasDTO> mapa_patDto = patologiaDAO.obtenerListaPalogias();
+			patologiaDAO = new PatologiasDAO();
 			
-			SintomasDAO sintomasDAO = new SintomasDAO();
-			ArrayList lista_sintomas =  (ArrayList) sintomasDAO.obtenerTodosSintomas();
+			mapa_patologias = patologiaDAO.obtenerListaPalogias();
+			lista_sintomas = SintomasDAO.obtenerTodosSintomas();
+			lista_sintomas_ordenados = SintomasDAO.getSintomasOrdenados(); 
 			
-				MapaPatologias mapaPatologias = new MapaPatologias();
-				mapaPatologias.setMapapatologia(mapa_patDto);
-				
-				ListadoSintomas listadoSintomas = new ListadoSintomas();
-				listadoSintomas.setMapapatologia(lista_sintomas);
-				
-				log.error ("Mapa Inicializado");
-			} catch (Throwable e) {
-				// TODO Auto-generated catch block
-				log.error ("Ha ocurrido un error inesperado", e);
-			}
-	    }
+			MapaPatologias.setMapapatologia(mapa_patologias);
+			ListadoSintomas.setListado_sintomas(lista_sintomas);
+			ListadoSintomas.setListado_sintomas_ordenado(lista_sintomas_ordenados);
+			
+			log.debug ("Patologías y Síntomas precargados");
+			
+		} 
+    	catch (Throwable e) 
+    	{
+			log.error ("Ha ocurrido un error inesperado", e);
+		}
+    }
 	
 }

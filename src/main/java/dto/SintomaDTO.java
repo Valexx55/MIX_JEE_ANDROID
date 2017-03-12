@@ -2,7 +2,7 @@ package dto;
 
 import org.apache.log4j.Logger;
 
-public class SintomasDTO
+public class SintomaDTO
 {	
 	private final static Logger log = Logger.getLogger("mylog");
 	
@@ -15,7 +15,7 @@ public class SintomasDTO
 	@Override
 	public boolean equals(Object obj) {
 		// TODO Auto-generated method stub
-		return this.id_sintoma == ((SintomasDTO) obj).id_sintoma;
+		return this.id_sintoma == ((SintomaDTO) obj).id_sintoma;
 	}
 
 
@@ -45,7 +45,7 @@ public class SintomasDTO
 
 
 
-	public SintomasDTO(int id, String descripcion, String pregunta_web, int prioridad_sint) {
+	public SintomaDTO(int id, String descripcion, String pregunta_web, int prioridad_sint) {
 		super();
 		this.id_sintoma = id;
 		this.descripcion = descripcion;
@@ -55,7 +55,7 @@ public class SintomasDTO
 	}
 
 	
-	public SintomasDTO(int id_sintoma, String nombre_sintoma)
+	public SintomaDTO(int id_sintoma, String nombre_sintoma)
 	{
 		super();
 		this.id_sintoma = id_sintoma;
@@ -63,12 +63,12 @@ public class SintomasDTO
 		log.debug ("Objeto sintomas DTO creado");
 	}
 
-	public SintomasDTO()
+	public SintomaDTO()
 	{
 		log.debug ("Sintomas DTO");
 	}
 	
-	public SintomasDTO(String nombre_sintoma)
+	public SintomaDTO(String nombre_sintoma)
 	{
 		this.descripcion = nombre_sintoma;
 	}

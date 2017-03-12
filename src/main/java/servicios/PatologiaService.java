@@ -7,30 +7,32 @@ import java.util.Map;
 import org.apache.log4j.Logger;
 
 import dto.MapaPatologias;
-import dto.PatologiasDTO;
-import dto.SintomasDTO;
+import dto.PatologiaDTO;
+import dto.SintomaDTO;
 
 public class PatologiaService {
 	private final static Logger log = Logger.getLogger("mylog");
 	
-	public PatologiasDTO obtenerPatologiaPorID(int id){
-		PatologiasDTO patoDTO = null;
+	public PatologiaDTO obtenerPatologiaPorID(int id)
+	{
+		PatologiaDTO patoDTO = null;
 
 			patoDTO = MapaPatologias.getPatologia (id);
 			log.debug("PatologiasDTO buscada y devuelta");
+			
 		return patoDTO;
 	}
 
-	public List<PatologiasDTO> obtenerPatologiasPorSintoma(int id_sintoma){
+	public List<PatologiaDTO> obtenerPatologiasPorSintoma(int id_sintoma){
 		
 		PatologiaService service = new PatologiaService();
-		List<PatologiasDTO> lista_completa = new ArrayList<PatologiasDTO>();
+		List<PatologiaDTO> lista_completa = new ArrayList<PatologiaDTO>();
 		lista_completa = service.obtenerListaPatologias();
-		List<PatologiasDTO> lista_devuelta = new ArrayList<PatologiasDTO>();
-		List<SintomasDTO> lista_sintomas = new ArrayList<SintomasDTO>();
+		List<PatologiaDTO> lista_devuelta = new ArrayList<PatologiaDTO>();
+		List<SintomaDTO> lista_sintomas = new ArrayList<SintomaDTO>();
 		log.debug("Recorre lista de PatologiasDTO");
 		
-		for(PatologiasDTO patologia:lista_completa)
+		for(PatologiaDTO patologia:lista_completa)
 		{
 			lista_sintomas = patologia.getLista_sintomas();
 			
@@ -45,9 +47,9 @@ public class PatologiaService {
 		return lista_devuelta;
 	}
 	
-	public boolean sintomaEncontrado(List<SintomasDTO> lista_sintomas,int id_sintoma){
+	public boolean sintomaEncontrado(List<SintomaDTO> lista_sintomas,int id_sintoma){
 		boolean encontrado = false;
-		SintomasDTO sintoma = new SintomasDTO();
+		SintomaDTO sintoma = new SintomaDTO();
 		int contador = 0;
 		int id_auxilar = 0;
 		
@@ -70,15 +72,15 @@ public class PatologiaService {
 		return encontrado;
 	}
 
-	public List<PatologiasDTO> obtenerListaPatologias(){
-		Map<Integer, PatologiasDTO> mapapatologia =  MapaPatologias.obtenerMapapatologia();
-		List<PatologiasDTO> lista_completa = new ArrayList<PatologiasDTO>();
+	public List<PatologiaDTO> obtenerListaPatologias(){
+		Map<Integer, PatologiaDTO> mapapatologia =  MapaPatologias.getMapapatologia();
+		List<PatologiaDTO> lista_completa = new ArrayList<PatologiaDTO>();
 		
 		log.debug("Listar todas las PatologiasDTO");
 		
 		for (Integer nombre: mapapatologia.keySet())
 		{
-			PatologiasDTO patologia = mapapatologia.get(nombre);
+			PatologiaDTO patologia = mapapatologia.get(nombre);
 	    	lista_completa.add(patologia);
 		} 
 		

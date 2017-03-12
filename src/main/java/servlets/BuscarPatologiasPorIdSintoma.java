@@ -15,7 +15,7 @@ import org.apache.log4j.Logger;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
-import dto.PatologiasDTO;
+import dto.PatologiaDTO;
 import servicios.PatologiaService;
 
 /**
@@ -23,6 +23,9 @@ import servicios.PatologiaService;
  */
 @WebServlet("/BuscarPatologiasPorIdSintoma")
 public class BuscarPatologiasPorIdSintoma extends HttpServlet {
+	
+	private PatologiaService patologia_service;
+	
 	private static final long serialVersionUID = 1L;
 	private final static Logger log = Logger.getLogger("mylog");
     /**
@@ -34,36 +37,40 @@ public class BuscarPatologiasPorIdSintoma extends HttpServlet {
  
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * s
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try {
-		log.debug("Se listan PatologiasDTO por Sintoma y se deuelven como Json");
-		String valorSintoma = request.getParameter("sintomaIntroducido");
-		int id_sintoma = Integer.parseInt(valorSintoma);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
 		
-		PatologiaService service = new PatologiaService();
-		List<PatologiasDTO> lista_patologias = null;
+		String valorSintoma = null;
+		int id_sintoma = -1;
+		List<PatologiaDTO> lista_patologias = null;
+		Gson gson = null;
+		Type tipoListaSintomas = new TypeToken<List<PatologiaDTO>>(){}.getType();
+		String json_patologias = null;	
 		
-		lista_patologias = service.obtenerPatologiasPorSintoma(id_sintoma);
+			log.debug("Doget BuscarPatologiasPorIdSintoma invoado");
+			
+			//OBTENGO PARÁMETROS Y CONSUTO
+			valorSintoma = request.getParameter("sintomaIntroducido");
+			id_sintoma = Integer.parseInt(valorSintoma);
+			lista_patologias = patologia_service.obtenerPatologiasPorSintoma(id_sintoma);
 		
-		Gson gson = new Gson();
-		Type tipoListaSintomas = new TypeToken<List<PatologiasDTO>>(){}.getType();
-		String s = gson.toJson(lista_patologias, tipoListaSintomas);
-		
-		
-		response.setCharacterEncoding("UTF-8");
-		response.getWriter().write(s);
-		} catch (Exception e)
-		{
-			log.error("ERROR 32" , e);
-		}
+			//SERIZALIZO A JSON
+			gson = new Gson();
+			json_patologias = gson.toJson(lista_patologias, tipoListaSintomas);
+
+			//ENVIO RESPUESTA
+			response.setCharacterEncoding("UTF-8");
+			response.getWriter().write(json_patologias);
+	
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+	@Override
+	public void init() throws ServletException {
+		super.init();
+		this.patologia_service = new PatologiaService();
+		
+		log.debug("Init BuscarPatologiaPorIdSintoma invocado (patologia service instanciado)");
 	}
-
 }

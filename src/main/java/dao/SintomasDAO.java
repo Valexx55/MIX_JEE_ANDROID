@@ -7,30 +7,30 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.log4j.Logger;
-import dto.SintomasDTO;
+import dto.SintomaDTO;
 import servicios.Consultas;
 
 
 public class SintomasDAO  {
 	private final static Logger log = Logger.getLogger("mylog");
 
-	public static SintomasDTO componerObjeto (ResultSet rs) throws Exception
+	public static SintomaDTO componerObjeto (ResultSet rs) throws Exception
 	{
-		SintomasDTO sintomaDTO = null;
+		SintomaDTO sintomaDTO = null;
 		
 			int id_sint = rs.getInt("id_sint");
 			String desc_sint = rs.getString("des_sint");
-			sintomaDTO = new SintomasDTO(id_sint, desc_sint);
+			sintomaDTO = new SintomaDTO(id_sint, desc_sint);
 		
 		return sintomaDTO;
 	}
 
 	
-	public static List<SintomasDTO> obtenerTodosSintomas()
+	public static List<SintomaDTO> obtenerTodosSintomas()
 	{
-		List<SintomasDTO> lista_sint = new ArrayList<SintomasDTO>();
+		List<SintomaDTO> lista_sint = new ArrayList<SintomaDTO>();
 		
-		SintomasDTO sintoma_auxiliar = new SintomasDTO();
+		SintomaDTO sintoma_auxiliar = new SintomaDTO();
 		Pool pool = null;
 		Connection con = null;
 		Statement st = null;
@@ -63,10 +63,10 @@ public class SintomasDAO  {
 		
 	}
 	
-	public static ArrayList<SintomasDTO> getSintomasOrdenados() {
+	public static ArrayList<SintomaDTO> getSintomasOrdenados() {
 		
-		ArrayList<SintomasDTO> lista = new ArrayList<SintomasDTO>();
-		SintomasDTO sint = null;
+		ArrayList<SintomaDTO> lista = new ArrayList<SintomaDTO>();
+		SintomaDTO sint = null;
 		
 		ResultSet rset = null;
 		Pool.getInstance();
@@ -83,7 +83,7 @@ public class SintomasDAO  {
 		while (rset.next())
 		{
 			
-			sint = new SintomasDTO(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getInt(4));
+			sint = new SintomaDTO(rset.getInt(1), rset.getString(2), rset.getString(3), rset.getInt(4));
 			lista.add(sint);
 		}
 		
