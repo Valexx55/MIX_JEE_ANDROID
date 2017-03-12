@@ -124,7 +124,7 @@ public class TestServlet extends HttpServlet {
 			
 			String respuesta = request.getParameter("resp");
 			MapaPatologiasCandidatas mapa_patolog_candidatas = (MapaPatologiasCandidatas) session.getAttribute("mapa_patologias_candidatas");
-			int num_sintoma_actual = (Integer) request.getAttribute("npregunta");
+			int num_sintoma_actual = Integer.parseInt(request.getParameter("npreg"));
 			Map<Integer, PatologiaDTO> mapa_patolog_resultado = null;
 			
 			mapa_patolog_resultado =  filtrar_patologias(respuesta, mapa_patolog_candidatas, num_sintoma_actual);
