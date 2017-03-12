@@ -13,7 +13,6 @@
 	GitHub: github.com/antoniolb92
 	From: Madrid, Spain
 
-	
 	-- Technical Information -- High Bronzed
 	
 	Director Project: Susana Sánchez Montero
@@ -30,7 +29,6 @@
 	Contact: carlotasanchezsansegundo@gmail.com
 	GitHub: github.com/css94
 	From: Madrid, Spain
-	
 	
 	-- DataBase 'N OpenShift Management -- Lesser Bronzed
 	
