@@ -96,7 +96,7 @@
 	From: Madrid, Spain
 
 	
-	-- Design, Human.txt, Quality Control, 'N Resting -- Ultra Bronzed 
+	-- Design, Quality Control, 'N Resting -- Ultra Bronzed 
 	
 	Project Director: Aitor García Ruiz
 	Contact: aitor.garcia.ruiz@hotmail.com
@@ -108,23 +108,10 @@
 	GitHub: github.com/alvgarfer
 	From: Madrid, Spain
 	
-	
-/* SPECIAL THANKS */
-
-	EN Translator: Aitor García Ruiz
-	Contact: aitor.garcia.ruiz@hotmail.com
-	GitHub: github.com/AitorPCGR
-	From: Madrid, Spain
-	
-	EN Translator: Álvaro García Fernández
-	Contact: alvgarfer@gmail.com
-	GitHub: github.com/alvgarfer
-	From: Madrid, Spain
-	
 
 /* SITE */
 
-	Last update: 03/02/2017
-	Language: English / Castellano
+	Last update: 12/03/2017
+	Language: English / Español
 	Doctype: HTML5
-	IDE: Eclipse, Notepad++, PhpMyAdmin, Photoshop, MySql, OpenShift
+	IDE: Eclipse, Notepad++, PhpMyAdmin, Photoshop, MySql, OpenShift, Git
