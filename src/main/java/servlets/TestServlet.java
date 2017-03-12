@@ -47,8 +47,7 @@ public class TestServlet extends HttpServlet {
 		} else {
 			
 			log.debug("FIN: SIN PATOLOGIAS CANDIDATAS");
-			request.setAttribute("pregunta", "PATOLOGIA DESCONOCIDA /n CONSULTE A SU DOCTOR");
-			request.getRequestDispatcher(".//html//test.jsp").forward(request, response);
+			request.getRequestDispatcher(".//html//resultadotestnegativo.jsp").forward(request, response);
 		}
 		
 	}
