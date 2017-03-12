@@ -1,69 +1,58 @@
 
-/* TEAM */
-
-	-- Proyect Director  -- Maximun Bronzed
-
-	The Boss: Isabel Martin Alonso
+	Isabel Martin Alonso
 	Contact: isabelmartinalonso2@gmail.com
 	GitHub: github.com/isamaralo
-	From: avila, Spain
+	From: Avila, Spain
 
-	Boss Assitant: Tony Lopez Belinchon
+	Tony Lopez Belinchon
 	Contact: antonio3650@gmail.com
 	GitHub: github.com/antoniolb92
 	From: Madrid, Spain
 
-	-- Technical Information -- High Bronzed
-	
-	Director Project: Susana Sanchez Montero
+	Susana Sanchez Montero
 	Contact: susanasanchez@auxiliamadrid.org
 	GitHub: github.com/Susanasanch
 	From: Madrid, Spain
 
-	Shallow Worker: Nira Maria Bethencourt Hernandez
+	Nira Maria Bethencourt Hernandez
 	Contact: nirabethencourt@gmail.com
 	GitHub: github.com/niraBH
 	From: Tenerife, Spain
 
-	Shallow Worjer: Carlota Elena Sanchez Sansegundo
+	Carlota Elena Sanchez Sansegundo
 	Contact: carlotasanchezsansegundo@gmail.com
 	GitHub: github.com/css94
 	From: Madrid, Spain
 	
-	-- DataBase 'N OpenShift Management -- Lesser Bronzed
-	
-	Shallow Worker: Cristian Hernandez Del Caso
+	Cristian Hernandez Del Caso
 	Contact: cristianhernandezdelcaso@hotmail.com
 	GitHub: github.com/Cristian8
-	From: avila, Spain
+	From: Avila, Spain
 	
-	Shallow Worker: Dante Jeanpier Olivares Oruna
+	Dante Jeanpier Olivares Oruna
 	Contact: dante_cancer27@hotmail.com
 	GitHub: github.com/dante321
-	From: Madrid, Spain
+	From: Lima, Peru
 	
-	Shallow Worker: Manuel Santiago Risquez
+	Manuel Santiago Risquez
 	Contact: manudj_2006@hotmail.com
 	GitHub: github.com/manu160427
 	From: Madrid, Spain
-
-	
-	-- Web Management--
 	
 	Artistic Director: Francisco Javier Moreno Pereda ("Luis Mambreche")
 	Contact: morenopereda12@gmail.com
 	GitHub: github.com/jmoremore
-	From: Madrid, Spain	
+	From: Albacete, Spain	
 	
 	Shallow Worker: Iulian Constantin Anghel ("Julian The Angel")
 	Contact: iulian.anghel19@gmail.com
 	GitHub: github.com/iulianang
-	From: Madrid, Spain
+	From: Bucarest, Romania
 	
 	Shallow Worker: Zaineb Mazouz
 	Contact: z.m.malak@hotmail.com
 	GitHub: github.com/zaineb88
-	From: Madrid, Spain
+	From: Rabat, Morocco
 	
 	Shallow Worker: Cristina Calvo Sanz
 	Contact: c.calvosanz@gmail.com
@@ -78,30 +67,24 @@
 	Shallow Worker: Diego Bladimir Duque Castillo
 	Contact: diego.duque90@gmail.com
 	GitHub: github.com/dbcd
-	From: Madrid, Spain
-	
-	
-	-- Git Management --
+	From: Madrid, Spain	
 
-	Shallow Worker: Daniel Garcea-Nieto Sanchez-Guijaldo
+	Daniel Garcea-Nieto Sanchez-Guijaldo
 	Contact: daniel_garciasanchez@hotmail.com
 	GitHub: github.com/danielparla
 	From: Madrid, Spain
 	
-	Shallow worker: Rodrigo Muñoz Sanchez
+	Rodrigo Muñoz Sanchez
 	Contact: rodrickms@gmail.com
 	GitHub: github.com/rodrick88
 	From: Madrid, Spain
-
 	
-	-- Design, Quality Control, 'N Resting -- Ultra Bronzed 
-	
-	Project Director: Aitor Garcea Ruiz
+	Aitor Garcea Ruiz
 	Contact: aitor.garcia.ruiz@hotmail.com
 	GitHub: github.com/AitorPCGR
 	From: Madrid, Spain
 	
-	Project Director: alvaro Garcia Fernandez
+	Alvaro Garcia Fernandez
 	Contact: alvgarfer@gmail.com
 	GitHub: github.com/alvgarfer
 	From: Madrid, Spain
