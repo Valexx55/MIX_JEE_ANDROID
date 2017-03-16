@@ -41,6 +41,7 @@ public class ObtenerListaAleatoria extends HttpServlet {
 		//Type tipoLista_palabras = new TypeToken<List<String>>(){}.getType();
 		String jsonPalabras = gson.toJson(lista_palabras);
 		//setear el tipo
+		response.setContentType("application/json");
 		response.getWriter().write(jsonPalabras);
 	}
 
