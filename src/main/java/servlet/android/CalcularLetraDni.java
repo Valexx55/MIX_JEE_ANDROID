@@ -44,6 +44,8 @@ public class CalcularLetraDni extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
+		log.debug("DOGET INVOCADO");
+		
 		String dni = request.getParameter("dni");
 		int i_dni = Integer.parseInt(dni);
 		char letra = letraDNI(i_dni);
@@ -64,6 +66,7 @@ public class CalcularLetraDni extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		log.debug("DOPOST INVOCADO");
 		String linea = request.getReader().readLine();
 		log.debug("MENSAJE JSON" + linea);
 		response.getWriter().write(linea);
