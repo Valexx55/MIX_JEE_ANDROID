@@ -1,4 +1,4 @@
-package servlets;
+package servlet.android;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 
 
 /**
@@ -17,6 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/CalcularLetraDni")
 public class CalcularLetraDni extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private final static Logger log = Logger.getLogger("mylog");
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -61,7 +64,9 @@ public class CalcularLetraDni extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		String linea = request.getReader().readLine();
+		log.info("MENSAJE JSON" + linea);
+		
 	}
 
 }
