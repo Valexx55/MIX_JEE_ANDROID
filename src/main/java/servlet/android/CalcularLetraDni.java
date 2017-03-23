@@ -65,7 +65,8 @@ public class CalcularLetraDni extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String linea = request.getReader().readLine();
-		log.info("MENSAJE JSON" + linea);
+		log.debug("MENSAJE JSON" + linea);
+		response.getWriter().write(linea);
 		
 	}
 
