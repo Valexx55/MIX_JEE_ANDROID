@@ -1,5 +1,7 @@
 package controlador.listener;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.servlet.ServletContextEvent;
@@ -12,6 +14,9 @@ import dao.PatologiasDAO;
 import dto.MapaPatologias;
 import dto.PatologiaDTO;
 import dto.SintomaDTO;
+import servlet.android.MapaUsuarios;
+import servlet.android.Mensaje;
+import servlet.android.Usuario;
 
 /**  Application Lifecycle Listener implementation class EscuchaInicioYFin  */
 	@WebListener
@@ -74,6 +79,30 @@ public class EscuchaInicioYFin implements ServletContextListener
 			ListadoSintomas.setListado_sintomas_ordenado(lista_sintomas_ordenados);
 			
 			log.debug ("Patologías y Síntomas precargados");
+			
+			/***************ANDROID***////////////////////////
+			HashMap<String, Usuario> mapa_usuarios = new HashMap<String, Usuario>();
+	    	mapa_usuarios.put("DGN", new Usuario("Daniel", "DGN", new ArrayList<Mensaje>(), new ArrayList<Mensaje>()));
+	    	mapa_usuarios.put("SSM", new Usuario("Susana", "SSM", new ArrayList<Mensaje>(), new ArrayList<Mensaje>()));
+	    	mapa_usuarios.put("CCS", new Usuario("Cristina", "CCS", new ArrayList<Mensaje>(), new ArrayList<Mensaje>()));
+	    	mapa_usuarios.put("DJO", new Usuario("Dante", "DJO", new ArrayList<Mensaje>(), new ArrayList<Mensaje>()));
+	    	mapa_usuarios.put("MSR", new Usuario("Manuel", "MSR", new ArrayList<Mensaje>(), new ArrayList<Mensaje>()));
+	    	mapa_usuarios.put("DDC", new Usuario("Duque", "DDC", new ArrayList<Mensaje>(), new ArrayList<Mensaje>()));
+	    	mapa_usuarios.put("IMA", new Usuario("Isabel", "IMA", new ArrayList<Mensaje>(), new ArrayList<Mensaje>()));
+	    	mapa_usuarios.put("AGF", new Usuario("Álvaro García", "AGF", new ArrayList<Mensaje>(), new ArrayList<Mensaje>()));
+	    	mapa_usuarios.put("AGR", new Usuario("Aitor", "AGR", new ArrayList<Mensaje>(), new ArrayList<Mensaje>()));
+	    	mapa_usuarios.put("AEC", new Usuario("Álvaro Esteve", "AEC", new ArrayList<Mensaje>(), new ArrayList<Mensaje>()));
+	    	mapa_usuarios.put("ICA", new Usuario("Iulian", "ICA", new ArrayList<Mensaje>(), new ArrayList<Mensaje>()));
+	    	mapa_usuarios.put("NBH", new Usuario("Nira", "NBH", new ArrayList<Mensaje>(), new ArrayList<Mensaje>()));
+	    	mapa_usuarios.put("ALB", new Usuario("Antonio", "ALB", new ArrayList<Mensaje>(), new ArrayList<Mensaje>()));
+	    	mapa_usuarios.put("CSS", new Usuario("Carlota", "CSS", new ArrayList<Mensaje>(), new ArrayList<Mensaje>()));
+	    	mapa_usuarios.put("ZMA", new Usuario("Zaineb", "ZMA", new ArrayList<Mensaje>(), new ArrayList<Mensaje>()));
+	    	mapa_usuarios.put("RMS", new Usuario("Rodrigo", "RMS", new ArrayList<Mensaje>(), new ArrayList<Mensaje>()));
+	    	mapa_usuarios.put("CHC", new Usuario("Cristian", "CHC", new ArrayList<Mensaje>(), new ArrayList<Mensaje>()));
+	    	mapa_usuarios.put("JMP", new Usuario("Javi", "JMP", new ArrayList<Mensaje>(), new ArrayList<Mensaje>()));
+
+	    	MapaUsuarios.setHm(mapa_usuarios);
+	    	//FIN DE ANDROID
 			
 		} 
     	catch (Throwable e) 
