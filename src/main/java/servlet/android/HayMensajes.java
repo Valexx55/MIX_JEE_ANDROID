@@ -3,6 +3,7 @@ package servlet.android;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 
@@ -80,14 +81,16 @@ public class HayMensajes extends HttpServlet {
 					
 					byte buffer_lectura [] = new byte [1024];
 					
-					FileInputStream fin = new FileInputStream(new File ("/iconoportada.png"));
+					InputStream is = getServletContext().getResourceAsStream("/iconoportada.png");
+					
+					
 					int leido = 0;
-					while ((leido = fin.read(buffer_lectura))!=-1)
+					while ((leido = is.read(buffer_lectura))!=-1)
 						{
 							sos.write(buffer_lectura, 0, leido);
 						}
 					
-					fin.close();
+					is.close();
 					
 					log.debug("DEVOLVIENDO UN PNG");
 			
