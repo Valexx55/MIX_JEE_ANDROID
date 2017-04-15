@@ -80,7 +80,7 @@ public class HayMensajes extends HttpServlet {
 					
 					byte buffer_lectura [] = new byte [1024];
 					
-					FileInputStream fin = new FileInputStream(new File ("iconoportada.png"));
+					FileInputStream fin = new FileInputStream(new File ("/iconoportada.png"));
 					int leido = 0;
 					while ((leido = fin.read(buffer_lectura))!=-1)
 						{
