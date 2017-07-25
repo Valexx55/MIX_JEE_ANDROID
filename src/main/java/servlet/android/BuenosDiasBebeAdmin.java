@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.example.vale.adminbebe.dto.BuenosDias;
 import com.google.gson.Gson;
 
@@ -21,6 +23,8 @@ import com.google.gson.Gson;
 @WebServlet("/BuenosDiasBebeAdmin")
 public class BuenosDiasBebeAdmin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	
+	private final static Logger log = Logger.getLogger("mylog");
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -57,8 +61,8 @@ public class BuenosDiasBebeAdmin extends HttpServlet {
 				Gson gson = new Gson();
 				bd = gson.fromJson(ulti_bdias_json, BuenosDias.class);
 				
-				System.out.println("RECIBIDO " + bd.toString());
-				
+				//System.out.println("RECIBIDO " + bd.toString());
+				log.debug("RECIBIDO " + bd.toString());
 				
 	}
 

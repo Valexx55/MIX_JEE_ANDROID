@@ -51,4 +51,10 @@ public class BuenosDias {
     public void setFecha(String fecha) {
         this.fecha = fecha;
     }
+    
+    @Override
+    public String toString() {
+    	// TODO Auto-generated method stub
+    	return "FECHA " + fecha + " MENSAJE " + mensaje + " FOTO " + foto;
+    }
 }
