@@ -1,5 +1,6 @@
 package com.example.vale.adminbebe.dto;
 
+import java.io.Serializable;
 
 /**
  * @author vale
@@ -9,11 +10,15 @@ package com.example.vale.adminbebe.dto;
  *
  */
 
-public class BuenosDias {
+public class BuenosDias implements Serializable {
 
 
 
-    //la foto codificada en BASE64
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -6181349799519810200L;
+	//la foto codificada en BASE64
     private String foto;
     private String mensaje;
     private String fecha;
@@ -56,5 +61,15 @@ public class BuenosDias {
     public String toString() {
     	// TODO Auto-generated method stub
     	return "FECHA " + fecha + " MENSAJE " + mensaje + " FOTO " + foto;
+    }
+    
+    @Override
+    public boolean equals(Object obj) {
+    	boolean bdev = false;
+    	
+    		BuenosDias bb2 = (BuenosDias)obj;
+    		bdev = this.fecha.equals(bb2.fecha)&&this.mensaje.equals(bb2.mensaje)&&this.foto.equals(bb2.foto);
+    	
+    	return bdev;
     }
 }

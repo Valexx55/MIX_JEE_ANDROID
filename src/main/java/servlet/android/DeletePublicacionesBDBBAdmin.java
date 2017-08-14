@@ -6,6 +6,7 @@ import java.io.PrintWriter;
 import java.lang.reflect.Type;
 import java.net.HttpURLConnection;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
+import com.example.vale.adminbebe.dto.BuenosDias;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -65,8 +67,27 @@ public class DeletePublicacionesBDBBAdmin extends HttpServlet {
 				Gson gson = new Gson();
 				lista_fechas_borrar = gson.fromJson(cuerpo_fechas_borrar,tipoListaFechas);
 				
-				//System.out.println("RECIBIDO " + bd.toString());
 				log.debug("RECIBIDO " + lista_fechas_borrar.toString());
+				try
+				{
+					Map<String, BuenosDias> mapa_publicaciones = FicheroPublicaciones.obtenerPublicaciones();
+					for (String fecha : lista_fechas_borrar)
+					{
+						mapa_publicaciones.remove(fecha);
+					}
+					FicheroPublicaciones.guardarPublicaciones(mapa_publicaciones);
+					log.debug("BORRADAS LAS PUBLICACIONES");
+				}
+				catch (Exception e)
+				{
+					response.setStatus(HttpURLConnection.HTTP_INTERNAL_ERROR);
+					log.error("ERROR AL ACTUAIZAR LA BD", e);
+				}
+				
+				//FicheroPublicaciones.obtenerPublicaciones();
+				
+				//System.out.println("RECIBIDO " + bd.toString());
+				
 				
 	}
 

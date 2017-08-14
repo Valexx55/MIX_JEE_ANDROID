@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.HttpURLConnection;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -60,9 +62,26 @@ public class BuenosDiasBebeAdmin extends HttpServlet {
 				//lo desiarlizo A BuenosDias como mera prueba
 				Gson gson = new Gson();
 				bd = gson.fromJson(ulti_bdias_json, BuenosDias.class);
-				
-				//System.out.println("RECIBIDO " + bd.toString());
 				log.debug("RECIBIDO " + bd.toString());
+				//nuevo--> Lo guardo
+				//obtengo, edito/añado y guardo
+				try{
+					
+					Map<String, BuenosDias> mapa_publicaciones = FicheroPublicaciones.obtenerPublicaciones();
+					//caso especial mapa_pubicaciones es null la primera vez
+					if (mapa_publicaciones == null)
+					{
+						mapa_publicaciones = new HashMap<String, BuenosDias>();
+					}
+					mapa_publicaciones.put(bd.getFecha(), bd);
+					FicheroPublicaciones.guardarPublicaciones(mapa_publicaciones);
+					log.debug("GUARDADO");
+					
+				}catch (Exception e)
+				{
+					log.error("ERROR AL LEER EL FICHERO PUBICACIONES", e);
+					response.setStatus(HttpURLConnection.HTTP_INTERNAL_ERROR);
+				}
 				
 	}
 
