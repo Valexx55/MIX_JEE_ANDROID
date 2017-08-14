@@ -53,6 +53,7 @@ public class ListarPublicaciones extends HttpServlet {
 					bd_aux = mapa.get(clave_aux);
 					log.debug(bd_aux.toString());
 				}
+				log.debug("TOTAL "+ mapa.size());
 			} else {
 				log.debug("MAPA VAcío");
 				

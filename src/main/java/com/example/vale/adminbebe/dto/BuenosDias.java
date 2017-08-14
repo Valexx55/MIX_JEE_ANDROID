@@ -60,7 +60,7 @@ public class BuenosDias implements Serializable {
     @Override
     public String toString() {
     	// TODO Auto-generated method stub
-    	return "FECHA " + fecha + " MENSAJE " + mensaje + " FOTO " + foto;
+    	return "FECHA " + fecha + " MENSAJE " + mensaje + " FOTO " + foto.substring(0,5);
     }
     
     @Override
