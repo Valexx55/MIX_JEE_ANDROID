@@ -44,7 +44,7 @@ public class ObtenerMensajeBuenosDias extends HttpServlet {
 		BuenosDias bd = null;
 		
 				fecha = request.getParameter("fecha");//leo la fecha
-				log.debug("Fecha recibida " + bd.toString());
+				log.debug("Fecha recibida " + fecha);
 				
 				//buscar el mensaje en el mapa
 				try{
